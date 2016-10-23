@@ -4,6 +4,7 @@
   "description": "WIP Fully fluid responsive SVG charts for React",
   "main": "index.js",
   "scripts": {
+    "prepublish": "mkdir -p dist && babel src --out-dir dist",
     "start": "webpack-dev-server"
   },
   "keywords": [],
