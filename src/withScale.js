@@ -21,8 +21,8 @@ const withScale = Comp => {
     withBars,
     ...props
   }) => {
-    const w = 100 + 2 * px
-    const h = 100 + 2 * py
+    const w = 100 // + 2 * px
+    const h = 100 // + 2 * py
 
     viewBox = viewBox || [ 0, 0, w, h ].join(' ')
 
@@ -38,15 +38,15 @@ const withScale = Comp => {
     const barWidth = ratio / den * 100
 
     const xrange = withBars
-      ? [ px + barWidth / 2, 100 + px - barWidth / 2]
-      : [ px, 100 + px ]
+      ? [ px + barWidth / 2, 100 - px - barWidth / 2]
+      : [ px, 100 - px ]
     const x = scaleLinear()
       .domain([ 0, data.length - 1 ])
       .range(xrange)
 
     const y = scaleLinear()
       .domain([ min, max ])
-      .range([ 100 + py, 0 + py ])
+      .range([ 100 - py, py ])
 
     const scale = { x, y }
 
@@ -61,7 +61,7 @@ const withScale = Comp => {
     const barScale = {
       x: scaleLinear()
         .domain([ 0, len - 1 ])
-        .range([ 0 + px, 100 + px - barWidth ]),
+        .range([ px, 100 - px - barWidth ]),
       y
     }
 

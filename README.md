@@ -62,9 +62,11 @@ Modern evergreen browsers should support this feature, but charts may appear dis
 - [x] Bars
 - [x] Rules
 - [x] Rule
-- [ ] Div/Box component
-- [ ] AxisLabels
-- [ ] Label
+- [x] Div/Box component
+- [x] Label
+- [-] AxisLabels
+- [ ] BarLabels
+- [ ] FlexLabels
 
 - [ ] Tooltip
 - [ ] theme context

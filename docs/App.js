@@ -7,6 +7,9 @@ import {
   Bars,
   Rule,
   Rules,
+  Div,
+  Label,
+  Labels,
 } from '../src'
 
 const data = [
@@ -41,20 +44,34 @@ class App extends React.Component {
           min={0}
           data={data}
           />
-        <Line data={data} px={4} py={8} />
-        <Chart>
+        <Line data={data} py={8} />
+        <Chart style={{ marginBottom: 48 }}>
           <Group style={{ backgroundColor: '#eee' }}>
+            <Rules y={4} />
             <Bars
               data={data}
-              dataPad={12}
+              min={0}
               color={blue} />
             <Line
               data={data}
-              dataPad={12}
-              withBars
+              min={0}
               dots
+              withBars
               color={orange} />
+            <Rules x={data.length} />
           </Group>
+          <Labels
+            center
+            px={8}
+            x={[
+            'One',
+            'Two',
+            'Three',
+            'Four',
+            'Five',
+            'Six',
+            'Seven',
+          ]} />
         </Chart>
         <hr />
         <Group style={{ backgroundColor: '#eee' }}>
@@ -63,20 +80,21 @@ class App extends React.Component {
           <Bars
             data={data}
             min={0}
-            px={8}
             height={128}
-            viewBox='0 0 116 200'
+            px={8}
+            viewBox='0 0 100 200'
             color={blue} />
           <Bars
             data={data.map(d => d * -1)}
             max={0}
-            px={8}
             height={128}
-            viewBox='0 0 116 200'
+            px={8}
+            viewBox='0 0 100 200'
             y={50}
             color='#444' />
           <Line
             data={data}
+            withBars
             px={8}
             dots
             color={orange} />
