@@ -20,8 +20,10 @@ const Bars = ({
   if (!barPoints.length) return null
 
   const bars = barPoints.map(({ x, y, d }, i) => {
-    const hi = d >= 0 ? 100 - y + py : y + py
-    const by = d >= 0 ? y : 0 + py
+    const hi = d === 0
+      ? 0
+      : d > 0 ? 100 - y + py : y + py
+    const by = d > 0 ? y : 0 + py
     return (
       <rect
         key={i}

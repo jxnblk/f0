@@ -10,7 +10,7 @@ const Area = ({
   xmin = 0,
   style
 }) => {
-  if (points.length ) return null
+  if (!points.length) return null
 
   const command = i => i === 0 ? 'M' : 'L'
 
