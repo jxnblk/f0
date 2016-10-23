@@ -10,7 +10,7 @@ Fully fluid responsive SVG charts for React
 ## To do:
 - [x] Line area
 - [ ] Chart container
-- [ ] Group (Svg)
+- [x] Group (Svg)
 - [x] withScale HOC
 - [x] Bars
 - [ ] Div/Box component

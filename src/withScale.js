@@ -15,23 +15,34 @@ const withScale = Comp => {
     max,
     px = 0,
     py = 0,
+    viewBox,
+    dataPad = 0,
     ratio = 2,
+    withBars,
     ...props
   }) => {
     const w = 100 + 2 * px
     const h = 100 + 2 * py
 
-    const viewBox = [ 0, 0, w, h ].join(' ')
+    viewBox = viewBox || [ 0, 0, w, h ].join(' ')
 
-    const datamin = d3min(data)
-    const datamax = d3max(data)
+    const datamin = d3min(data) - dataPad
+    const datamax = d3max(data) + dataPad
 
-    min = isNum(min) && min < datamin? min : datamin
+    min = isNum(min) && min < datamin ? min : datamin
     max = isNum(max) && max > datamax ? max : datamax
 
+    const len = data.length
+    const den = len * (ratio + 1)
+    const pad = 1 / den * 100
+    const barWidth = ratio / den * 100
+
+    const xrange = withBars
+      ? [ px + barWidth / 2, 100 + px - barWidth / 2]
+      : [ px, 100 + px ]
     const x = scaleLinear()
       .domain([ 0, data.length - 1 ])
-      .range([ 0 + px, 100 + px ])
+      .range(xrange)
 
     const y = scaleLinear()
       .domain([ min, max ])
@@ -47,11 +58,6 @@ const withScale = Comp => {
     })
 
     // Bar scale
-    const len = data.length
-    const den = len * (ratio + 1)
-    const pad = 1 / den * 100
-    const barWidth = ratio / den * 100
-
     const barScale = {
       x: scaleLinear()
         .domain([ 0, len - 1 ])

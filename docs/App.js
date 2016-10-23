@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Group from '../src/Group'
 import Line from '../src/Line'
 import Bars from '../src/Bars'
 
@@ -35,6 +36,40 @@ class App extends React.Component {
           data={data}
           />
         <Line data={data} px={4} py={8} />
+        <Group style={{ backgroundColor: '#eee' }}>
+          <Bars
+            data={data}
+            dataPad={12}
+            color={blue} />
+          <Line
+            data={data}
+            dataPad={12}
+            withBars
+            dots
+            color={orange} />
+        </Group>
+        <hr />
+        <Group style={{ backgroundColor: '#eee' }}>
+          <Bars
+            data={data}
+            dataPad={12}
+            height={128}
+            viewBox='0 0 100 200'
+            color={blue} />
+          <Bars
+            data={data.map(d => d * -1)}
+            dataPad={12}
+            height={128}
+            viewBox='0 0 100 200'
+            y={50}
+            color='#444' />
+          <Line
+            data={data}
+            dataPad={12}
+            withBars
+            dots
+            color={orange} />
+        </Group>
         <Line
           dots
           data={data} />

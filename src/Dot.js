@@ -4,7 +4,7 @@ import React from 'react'
 const Dot = ({
   x = 0,
   y = 0,
-  size = 8,
+  size = 12,
   color = 'currentcolor',
   fill,
   strokeWidth,

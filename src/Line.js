@@ -3,7 +3,6 @@ import React from 'react'
 import withScale from './withScale'
 import Dots from './Dots'
 import Area from './Area'
-import Debug from './Debug'
 
 const isNum = n => !isNaN(n)
 
@@ -27,8 +26,7 @@ const Line = ({
   dotSize,
   dotColor,
   dotFill,
-  style = {},
-  debug,
+  style = {}
 }) => {
   if (!points.length) return null
 
@@ -60,48 +58,39 @@ const Line = ({
   }
 
   return (
-    <div>
-      <svg
-        viewBox={viewBox}
-        preserveAspectRatio='none'
-        style={sx.root}
-      >
-        {area && (
-          <Area
-            points={points}
-            xmin={x(0)}
-            ymin={y(min)}
-            fill={areaFill}
-            opacity={areaOpacity}
-            style={sx.area}
-          />
-        )}
-        <path
-          d={d}
-          fill='none'
-          vectorEffect='non-scaling-stroke'
-          stroke={color}
-          strokeWidth={strokeWidth}
-          strokeLinecap={strokeLinecap}
-        />
-        {dots && (
-          <Dots
-            points={points}
-            size={dotSize}
-            color={dotColor}
-            fill={dotFill}
-            strokeWidth={strokeWidth}
-            style={sx.dot}
-          />
-        )}
-      </svg>
-      {debug && (
-        <Debug
-          d={d}
+    <svg
+      viewBox={viewBox}
+      preserveAspectRatio='none'
+      style={sx.root}>
+      {area && (
+        <Area
           points={points}
+          xmin={x(0)}
+          ymin={y(min)}
+          fill={areaFill}
+          opacity={areaOpacity}
+          style={sx.area}
         />
       )}
-    </div>
+      <path
+        d={d}
+        fill='none'
+        vectorEffect='non-scaling-stroke'
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap={strokeLinecap}
+      />
+      {dots && (
+        <Dots
+          points={points}
+          size={dotSize}
+          color={dotColor || color}
+          fill={dotFill}
+          strokeWidth={strokeWidth}
+          style={sx.dot}
+        />
+      )}
+    </svg>
   )
 }
 

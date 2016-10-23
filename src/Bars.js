@@ -15,6 +15,7 @@ const Bars = ({
   py = 0,
   color = 'currentcolor',
   style,
+  ...props
 }) => {
   if (!barPoints.length) return null
 
@@ -44,6 +45,7 @@ const Bars = ({
 
   return (
     <svg
+      {...props}
       viewBox={viewBox}
       preserveAspectRatio='none'
       fill={color}
