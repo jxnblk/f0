@@ -1,8 +1,13 @@
 
 import React from 'react'
-import Group from '../src/Group'
-import Line from '../src/Line'
-import Bars from '../src/Bars'
+import {
+  Chart,
+  Group,
+  Line,
+  Bars,
+  Rule,
+  Rules,
+} from '../src'
 
 const data = [
   3,
@@ -29,6 +34,7 @@ class App extends React.Component {
         padding: 32,
       }
     }
+
     return (
       <div style={sx.root}>
         <Bars
@@ -36,37 +42,42 @@ class App extends React.Component {
           data={data}
           />
         <Line data={data} px={4} py={8} />
-        <Group style={{ backgroundColor: '#eee' }}>
-          <Bars
-            data={data}
-            dataPad={12}
-            color={blue} />
-          <Line
-            data={data}
-            dataPad={12}
-            withBars
-            dots
-            color={orange} />
-        </Group>
+        <Chart>
+          <Group style={{ backgroundColor: '#eee' }}>
+            <Bars
+              data={data}
+              dataPad={12}
+              color={blue} />
+            <Line
+              data={data}
+              dataPad={12}
+              withBars
+              dots
+              color={orange} />
+          </Group>
+        </Chart>
         <hr />
         <Group style={{ backgroundColor: '#eee' }}>
+          <Rules y={5} />
+          <Rules x={data.length} px={8} />
           <Bars
             data={data}
-            dataPad={12}
+            min={0}
+            px={8}
             height={128}
-            viewBox='0 0 100 200'
+            viewBox='0 0 116 200'
             color={blue} />
           <Bars
             data={data.map(d => d * -1)}
-            dataPad={12}
+            max={0}
+            px={8}
             height={128}
-            viewBox='0 0 100 200'
+            viewBox='0 0 116 200'
             y={50}
             color='#444' />
           <Line
             data={data}
-            dataPad={12}
-            withBars
+            px={8}
             dots
             color={orange} />
         </Group>
