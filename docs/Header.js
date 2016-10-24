@@ -18,7 +18,12 @@ const Header = (props) => {
       backgroundColor: styles.b[3],
     },
     title: {
+      display: 'flex',
+      flexWrap: 'wrap',
       color: styles.b[1]
+    },
+    space: {
+      flex: '1 1 auto'
     }
   }
 
@@ -31,7 +36,11 @@ const Header = (props) => {
         data={{ data: props.logo }}>
         {({ data }) => (
           <div className=''>
-            <h1 className='h1 xh0 mt0 mb3 mono' style={sx.title}>f0 {fl(data[data.length - 1])}</h1>
+            <h1 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
+              <div>f0</div>
+              <div style={sx.space} />
+              <div>{fl(data[data.length - 1])}</div>
+            </h1>
             <Group height={192}>
               <Rules y={5} color={styles.b[1]} />
               <Line

@@ -14,6 +14,7 @@ import {
 import Header from './Header'
 import BarDemo from './BarDemo'
 import DoubleBars from './DoubleBars'
+import BarsLine from './BarsLine'
 
 const blue = '#0077cc'
 const orange = '#ff5500'
@@ -52,7 +53,7 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    setInterval(this.randomize, 1250)
+    setInterval(this.randomize, 2000)
   }
 
   render () {
@@ -68,7 +69,10 @@ class App extends React.Component {
         <Header {...this.state} />
         <BarDemo {...this.state} />
         <DoubleBars {...this.state} />
+        <BarsLine {...this.state} />
+
         {/*
+        <div>
           <Bars
             min={0}
             data={data}
@@ -175,8 +179,8 @@ class App extends React.Component {
               areaOpacity={.25}
             />
           </div>
+        </div>
         */}
-        <pre>{data.join()}</pre>
       </div>
     )
   }

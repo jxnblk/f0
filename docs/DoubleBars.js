@@ -20,7 +20,13 @@ const DoubleBars = ({
       color: '#fff',
       backgroundColor: styles.b[3]
     },
-    title: {}
+    title: {
+      display: 'flex',
+      flexWrap: 'wrap'
+    },
+    space: {
+      flex: '1 1 auto'
+    }
   }
   return (
     <section
@@ -31,7 +37,11 @@ const DoubleBars = ({
         data={{ data, neg }}>
         {({ data, neg }) => (
           <div>
-            <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>Bars {fl(data[data.length - 1])}</h2>
+            <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
+              <div>Bars</div>
+              <div style={sx.space} />
+              <div>{fl(data[data.length - 1])}</div>
+            </h2>
             <Bars
               height={128}
               data={data}

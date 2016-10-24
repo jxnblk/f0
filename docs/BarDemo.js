@@ -18,6 +18,11 @@ const BarDemo = ({
       backgroundColor: styles.b[1]
     },
     title: {
+      display: 'flex',
+      flexWrap: 'wrap'
+    },
+    space: {
+      flex: '1 1 auto'
     }
   }
 
@@ -30,7 +35,11 @@ const BarDemo = ({
         data={{ data }}>
         {({ data }) => (
           <div>
-            <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>Bars {fl(data[data.length - 1])}</h2>
+            <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
+              <div>Bars</div>
+              <div style={sx.space} />
+              <div>{fl(data[data.length - 1])}</div>
+            </h2>
             <Bars
               data={data}
               min={0}
