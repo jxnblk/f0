@@ -46,7 +46,7 @@ const DoubleBars = ({
                 <div>Bars + Line</div>
                 <div style={sx.space} />
                 <div>
-                  {fl(data[data.length - 1])}
+                  {fl(line[line.length - 1])}
                 </div>
               </h2>
               <Group>
