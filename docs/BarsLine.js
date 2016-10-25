@@ -7,23 +7,25 @@ import {
   Line,
   Rules
 } from '../src'
-import styles from './styles'
-import { format } from 'd3-format'
-
-const fl = format('.2f')
+import { fl } from './util'
 
 const DoubleBars = ({
   data,
-  neg
+  neg,
+  colors
 }) => {
   const sx = {
     root: {
-      color: styles.b[4],
-      backgroundColor: styles.b[0]
+      color: colors[4],
+      backgroundColor: colors[0],
+      transitionProperty: 'color, background-color, fill, stroke',
+      transitionDuration: '.2s, .8s',
+      transitionTimingFunction: 'ease-out'
     },
     title: {
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      alignItems: 'flex-end'
     },
     space: {
       flex: '1 1 auto'
@@ -46,7 +48,8 @@ const DoubleBars = ({
                 <div>Bars + Line</div>
                 <div style={sx.space} />
                 <div>
-                  {fl(line[line.length - 1])}
+                  <div className='h5 right-align'>Tachyonic inversion</div>
+                  <div>{fl(line[line.length - 1])}</div>
                 </div>
               </h2>
               <Group>
@@ -61,7 +64,7 @@ const DoubleBars = ({
                   height={128}
                   viewBox='0 0 100 200'
                   y={50}
-                  color={styles.b[2]}
+                  color={colors[2]}
                   data={neg}
                   min={-16}
                   max={0}
@@ -70,7 +73,7 @@ const DoubleBars = ({
                   data={line}
                   withBars
                   dots
-                  dotFill={styles.b[3]}
+                  dotFill={colors[3]}
                   dotSize={16}
                   color='#fff'
                   min={-16}

@@ -6,21 +6,24 @@ import {
   Group,
   Rules
 } from '../src'
-import styles from './styles'
 import { format } from 'd3-format'
 
 const fl = format('.2f')
 
-const Header = (props) => {
+const Header = ({ logo, colors }) => {
   const sx = {
     root: {
-      color: '#fff', // styles.c[0],
-      backgroundColor: styles.b[3],
+      color: colors[4],
+      backgroundColor: colors[2],
+      transitionProperty: 'color, background-color, fill, stroke',
+      transitionDuration: '.2s, .8s',
+      transitionTimingFunction: 'ease-out'
     },
     title: {
       display: 'flex',
       flexWrap: 'wrap',
-      color: styles.b[1]
+      alignItems: 'flex-end',
+      color: colors[1] // styles.b[1]
     },
     space: {
       flex: '1 1 auto'
@@ -33,16 +36,19 @@ const Header = (props) => {
       style={sx.root}>
       <VictoryAnimation
         duration={750}
-        data={{ data: props.logo }}>
+        data={{ data: logo }}>
         {({ data }) => (
           <div className=''>
             <h1 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
               <div>f0</div>
               <div style={sx.space} />
-              <div>{fl(data[data.length - 1])}</div>
+              <div>
+                <div className='h5 right-align'>Subspace frequency</div>
+                <div>{fl(data[data.length - 1])}</div>
+              </div>
             </h1>
             <Group height={192}>
-              <Rules y={5} color={styles.b[1]} />
+              <Rules y={5} color={colors[1]} />
               <Line
                 data={data}
                 min={0}
@@ -50,10 +56,10 @@ const Header = (props) => {
                 strokeWidth={6}
                 dots
                 color='#fff'
-                area={styles.b[4]}
+                area={colors[4]}
                 areaOpacity={1/2}
                 dotSize={24}
-                dotFill={styles.b[3]}
+                dotFill={colors[3]}
               />
             </Group>
           </div>

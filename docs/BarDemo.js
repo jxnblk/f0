@@ -2,24 +2,30 @@
 import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
-  Bars
+  Chart,
+  Group,
+  Bars,
+  Rules,
+  Labels
 } from '../src'
-import styles from './styles'
-import { format } from 'd3-format'
-
-const fl = format('.2f')
+import { fl } from './util'
 
 const BarDemo = ({
-  data
+  data,
+  colors
 }) => {
   const sx = {
     root: {
-      color: styles.b[4],
-      backgroundColor: styles.b[1]
+      color: colors[4],
+      backgroundColor: colors[1],
+      transitionProperty: 'color, background-color, fill',
+      transitionDuration: '.2s, .8s',
+      transitionTimingFunction: 'ease-out'
     },
     title: {
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      alignItems: 'flex-end'
     },
     space: {
       flex: '1 1 auto'
@@ -38,13 +44,33 @@ const BarDemo = ({
             <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
               <div>Bars</div>
               <div style={sx.space} />
-              <div>{fl(data[data.length - 1])}</div>
+              <div>
+                <div className='h5 right-align'>Telemetry</div>
+                <div>{fl(data[data.length - 1])}</div>
+              </div>
             </h2>
-            <Bars
-              data={data}
-              min={0}
-              max={16}
-            />
+            <Chart>
+              <Group>
+                <Rules color={colors[0]} y={4} />
+                <Bars
+                  data={data}
+                  min={0}
+                  max={16}
+                />
+              </Group>
+              <Labels
+                px={12}
+                x={[
+                  'a',
+                  'b',
+                  'c',
+                  'd',
+                  'e',
+                  'f',
+                  'g',
+                  'h',
+                ]} />
+            </Chart>
           </div>
         )}
       </VictoryAnimation>
