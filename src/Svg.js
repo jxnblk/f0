@@ -9,6 +9,7 @@ const Svg = ({
   ...props
 }) => {
   const sx = {
+    position: 'relative',
     display: 'block',
     margin: 0,
     overflow: 'visible',

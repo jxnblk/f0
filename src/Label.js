@@ -1,6 +1,5 @@
 
 import React from 'react'
-import Div from './Div'
 
 const Label = ({
   style,
@@ -8,13 +7,12 @@ const Label = ({
 }) => {
   const sx = {
     fontSize: 12,
-    height: 16,
-    lineHeight: '16px',
+    minHeight: 16,
     ...style
   }
 
   return (
-    <Div {...props} style={sx} />
+    <div {...props} style={sx} />
   )
 }
 

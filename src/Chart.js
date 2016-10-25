@@ -11,6 +11,7 @@ const Chart = ({
     position: 'relative',
     width,
     height,
+    // minHeight: height,
     ...style
   }
 

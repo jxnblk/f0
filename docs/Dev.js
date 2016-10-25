@@ -11,8 +11,16 @@ import {
   Area,
   Bar,
   Rules,
+
+  Axis,
+  DataLabels,
+
+  XAxis,
+  Label,
+
   Labels
 } from '../src'
+import { fl } from './util'
 
 const Dev = ({
   data,
@@ -56,16 +64,45 @@ const Dev = ({
                 <Rules x={8} y={5} />
               </Group>
             </Chart>
-            <Group>
-              <Bar
-                style={sx.bars}
-                color={colors[2]}
+            <Chart style={{
+              backgroundColor: '#f6f6f6'
+            }}>
+              <Axis y
+                labels={[
+                  16,
+                  12,
+                  8,
+                  4,
+                  0
+                ]} />
+              <Group>
+                <Rules y={5} />
+                <Bar
+                  style={sx.bars}
+                  color={colors[2]}
+                  data={data}
+                  min={0}
+                  max={16}
+                />
+              </Group>
+              <DataLabels
                 data={data}
                 min={0}
                 max={16}
+                format={fl}
               />
-              <Rules x={8} y={5} />
-            </Group>
+            </Chart>
+            <Axis rule
+              labels={[
+                'A',
+                'B',
+                'C',
+                'D',
+                'E',
+                'F',
+                'G',
+                'H'
+              ]} />
             <Area
               style={sx.bars}
               color={colors[1]}
