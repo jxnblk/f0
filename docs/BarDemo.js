@@ -4,7 +4,7 @@ import { VictoryAnimation } from 'victory'
 import {
   Chart,
   Group,
-  Bars,
+  Bar,
   Rules,
   Labels
 } from '../src'
@@ -42,7 +42,7 @@ const BarDemo = ({
         {({ data }) => (
           <div>
             <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
-              <div>Bars</div>
+              <div>Bar</div>
               <div style={sx.space} />
               <div>
                 <div className='h5 right-align'>Telemetry</div>
@@ -52,7 +52,7 @@ const BarDemo = ({
             <Chart>
               <Group>
                 <Rules color={colors[0]} y={4} />
-                <Bars
+                <Bar
                   data={data}
                   min={0}
                   max={16}

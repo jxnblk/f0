@@ -4,11 +4,11 @@ import { VictoryAnimation } from 'victory'
 import {
   Chart,
   Group,
-  Line
+  Area
 } from '../src'
 import { fl } from './util'
 
-const Area = ({
+const AreaDemo = ({
   data,
   logo,
   colors
@@ -50,21 +50,19 @@ const Area = ({
             </h2>
             <Chart>
               <Group>
-                <Line
+                <Area
                   data={logo}
                   min={0}
                   max={16}
                   color={colors[0]}
-                  area={colors[0]}
-                  areaOpacity={1}
+                  opacity={1}
                 />
-                <Line
+                <Area
                   data={data}
                   min={0}
                   max={16}
                   color={colors[3]}
-                  area={colors[3]}
-                  areaOpacity={1/2}
+                  opacity={1/2}
                 />
               </Group>
             </Chart>
@@ -75,5 +73,5 @@ const Area = ({
   )
 }
 
-export default Area
+export default AreaDemo
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Group,
-  Bars,
+  Bar,
   Rules
 } from '../src'
 import { fl } from './util'
@@ -40,7 +40,7 @@ const DoubleBars = ({
         {({ data, neg }) => (
           <div>
             <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
-              <div>Bars</div>
+              <div>Bar</div>
               <div style={sx.space} />
               <div>
                 <div className='h5 right-align'>Time dilation</div>
@@ -49,14 +49,14 @@ const DoubleBars = ({
             </h2>
             <Group>
               <Rules y={5} />
-              <Bars
+              <Bar
                 viewBox='0 0 100 200'
                 height={128}
                 data={data}
                 min={0}
                 max={16}
               />
-              <Bars
+              <Bar
                 viewBox='0 0 100 200'
                 y={50}
                 height={128}

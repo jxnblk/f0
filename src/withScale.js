@@ -8,68 +8,64 @@ import {
 
 const isNum = n => !isNaN(n)
 
+const getScale = ({
+  data = [],
+  length,         // Optional length
+  min,            // optional min value
+  max,            // optional max value
+  padRatio = 2,   // Ratio of bar width vs margin
+}) => {
+  const datamin = d3min(data)
+  const datamax = d3max(data)
+
+  min = isNum(min) && min < datamin ? min : datamin
+  max = isNum(max) && max < datamax ? max : datamax
+  length = length || data.length
+
+  const denominator = length * (padRatio + 1)
+  const pad = 1 / denominator * 100
+  const padWidth = padRatio / denominator * 100
+
+  const xdomain = ([ 0, length - 1 ])
+  const ydomain = ([ min, max ])
+  const x = scaleLinear().domain(xdomain).range([ 0, 100 ])
+  const padx = scaleLinear().domain(xdomain).range([ padWidth / 2, 100 - padWidth / 2 ])
+  const y = scaleLinear().domain(ydomain).range([ 100, 0 ])
+
+  const scale = { x, padx, y }
+
+  return {
+    min,
+    max,
+    scale,
+    padWidth
+  }
+}
+
 const withScale = Comp => {
   const ScaledComp = ({
     data = [],
-    min,
-    max,
-    px = 0,
-    py = 0,
     viewBox,
-    dataPad = 0,
-    ratio = 2,
-    withBars,
     ...props
   }) => {
-    const w = 100 // + 2 * px
-    const h = 100 // + 2 * py
+    const w = 100
+    const h = 100
 
     viewBox = viewBox || [ 0, 0, w, h ].join(' ')
 
-    const datamin = d3min(data) - dataPad
-    const datamax = d3max(data) + dataPad
-
-    min = isNum(min) && min < datamin ? min : datamin
-    max = isNum(max) && max > datamax ? max : datamax
-
-    const len = data.length
-    const den = len * (ratio + 1)
-    const pad = 1 / den * 100
-    const barWidth = ratio / den * 100
-
-    const xrange = withBars
-      ? [ px + barWidth / 2, 100 - px - barWidth / 2]
-      : [ px, 100 - px ]
-    const x = scaleLinear()
-      .domain([ 0, data.length - 1 ])
-      .range(xrange)
-
-    const y = scaleLinear()
-      .domain([ min, max ])
-      .range([ 100 - py, py ])
-
-    const scale = { x, y }
+    const {
+      min,
+      max,
+      scale,
+      padWidth
+    } = getScale({ data, ...props })
 
     const points = data.map((d, i) => {
       return {
-        x: x(i),
-        y: y(d)
-      }
-    })
-
-    // Bar scale
-    const barScale = {
-      x: scaleLinear()
-        .domain([ 0, len - 1 ])
-        .range([ px, 100 - px - barWidth ]),
-      y
-    }
-
-    const barPoints = data.map((d, i) => {
-      return {
         d,
-        x: barScale.x(i),
-        y: barScale.y(d)
+        x: scale.x(i),
+        padx: scale.padx(i),
+        y: scale.y(d)
       }
     })
 
@@ -77,16 +73,12 @@ const withScale = Comp => {
       <Comp
         {...props}
         data={data}
-        px={px}
-        py={py}
         viewBox={viewBox}
         min={min}
         max={max}
         scale={scale}
         points={points}
-        barScale={barScale}
-        barWidth={barWidth}
-        barPoints={barPoints}
+        padWidth={padWidth}
       />
     )
   }

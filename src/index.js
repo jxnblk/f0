@@ -2,22 +2,25 @@
 // SVG
 import Group from './Group'
 import Line from './Line'
-import Bars from './Bars'
-import Rule from './Rule'
+import Area from './Area'
+import Bar from './Bar'
 import Rules from './Rules'
+  import Rule from './Rule'
+// Dots??
 
 // HTML
 import Chart from './Chart'
-import Div from './Div'
-import Label from './Label'
-import Labels from './Labels'
+  import Div from './Div'
+  import Label from './Label'
+  import Labels from './Labels'
 
 // HOC
 import withScale from './withScale'
 
 
 export { default as Line } from './Line'
-export { default as Bars } from './Bars'
+export { default as Area } from './Area'
+export { default as Bar } from './Bar'
 export { default as Group } from './Group'
 export { default as Rule } from './Rule'
 export { default as Rules } from './Rules'
@@ -31,7 +34,8 @@ export { default as withScale } from './withScale'
 
 export default {
   Line,
-  Bars,
+  Area,
+  Bar,
   Chart,
   Group,
   Rule,

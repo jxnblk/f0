@@ -1,35 +1,36 @@
 
 import React from 'react'
+import withScale from './withScale'
+import Svg from './Svg'
 
 const Area = ({
-  d,
   points = [],
-  fill = 'currentcolor',
+  color = 'currentcolor',
   opacity = 1,
-  ymin = 100,
-  xmin = 0,
-  style
+  padWidth,
+  ...props
 }) => {
   if (!points.length) return null
 
   const command = i => i === 0 ? 'M' : 'L'
 
-  d = d || [
+  const d = [
     ...points.map(({ x, y }, i) => (
       `${command(i)} ${x} ${y}`
     )),
-    `V${ymin} H${xmin} z`
+    `V100 H0 z`
   ]
 
   return (
-    <path
-      d={d}
-      fill={fill}
-      opacity={opacity}
-      style={style}
-    />
+    <Svg {...props}>
+      <path
+        d={d}
+        fill={color}
+        opacity={opacity}
+      />
+    </Svg>
   )
 }
 
-export default Area
+export default withScale(Area)
 

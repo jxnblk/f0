@@ -19,19 +19,33 @@ const Rules = ({
   const w = 100 + 2 * px
   const h = 100 + 2 * py
   const viewBox = [ 0, 0, w, h ].join(' ')
-  const isXAxis = x > 1
-  const length = x > 1 ? x : y
-  const min = isXAxis ? px : py
+  // const isXAxis = x > 1
+  // const length = x > 1 ? x : y
+  // const min = isXAxis ? px : py
 
-  const rules = Array.from({ length: length })
+  const xrules = Array.from({ length: x })
     .map((n, i) => i)
     .map(n => {
-      const step = n / (length - 1) * 100 + min
+      const step = n / (x - 1) * 100 + px
       return (
         <Rule
           key={n}
-          x={x ? step : undefined}
-          y={y ? step : undefined}
+          x={step}
+          strokeWidth={strokeWidth}
+          color={color}
+          opacity={opacity}
+        />
+      )
+    })
+
+  const yrules = Array.from({ length: y })
+    .map((n, i) => i)
+    .map(n => {
+      const step = n / (y - 1) * 100 + py
+      return (
+        <Rule
+          key={n}
+          y={step}
           strokeWidth={strokeWidth}
           color={color}
           opacity={opacity}
@@ -53,7 +67,8 @@ const Rules = ({
       viewBox={viewBox}
       preserveAspectRatio='none'
       style={sx}>
-      {rules}
+      {xrules}
+      {yrules}
     </svg>
   )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Group,
-  Bars,
+  Bar,
   Line,
   Rules
 } from '../src'
@@ -45,7 +45,7 @@ const DoubleBars = ({
           return (
             <div>
               <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
-                <div>Bars + Line</div>
+                <div>Bar + Line</div>
                 <div style={sx.space} />
                 <div>
                   <div className='h5 right-align'>Tachyonic inversion</div>
@@ -53,14 +53,14 @@ const DoubleBars = ({
                 </div>
               </h2>
               <Group>
-                <Bars
+                <Bar
                   height={128}
                   viewBox='0 0 100 200'
                   data={data}
                   min={0}
                   max={16}
                 />
-                <Bars
+                <Bar
                   height={128}
                   viewBox='0 0 100 200'
                   y={50}
@@ -71,7 +71,7 @@ const DoubleBars = ({
                 />
                 <Line
                   data={line}
-                  withBars
+                  pad
                   dots
                   dotFill={colors[3]}
                   dotSize={16}

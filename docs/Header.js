@@ -56,8 +56,6 @@ const Header = ({ logo, colors }) => {
                 strokeWidth={6}
                 dots
                 color='#fff'
-                area={colors[4]}
-                areaOpacity={1/2}
                 dotSize={24}
                 dotFill={colors[3]}
               />

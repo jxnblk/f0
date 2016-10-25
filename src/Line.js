@@ -1,77 +1,42 @@
 
 import React from 'react'
 import withScale from './withScale'
+import Svg from './Svg'
 import Dots from './Dots'
-import Area from './Area'
 
 const isNum = n => !isNaN(n)
 
 const Line = ({
-  data = [],
-  viewBox,
   scale,
   points = [],
   min,
   max,
-  width = '100%',
-  height = 256,
-  px = 0,
-  py = 0,
+  pad,
+  padWidth,
+
   color = 'currentcolor',
   strokeWidth = 3,
   strokeLinecap = 'round',
-  area,
-  areaOpacity = 1,
+
+  // Should this be an object?
   dots,
   dotSize,
   dotColor,
   dotFill,
-  style = {}
+  style = {},
+  ...props
 }) => {
   if (!points.length) return null
 
-  const { x, y } = scale
-
   const command = i => i === 0 ? 'M' : 'L'
 
-  const d = points.map(({ x, y }, i) => (
+  const p = points.map(p => pad ? ({ ...p, x: p.padx }) : p)
+  const d = p.map(({ x, y }, i) => (
     `${command(i)} ${x} ${y}`
   ))
 
-  const areaFill = typeof area === 'string' ? area : 'currentcolor'
-
-  const sx = {
-    root: {
-      display: 'block',
-      margin: 0,
-      width,
-      height,
-      overflow: 'visible',
-      ...style
-    },
-    area: {
-      ...style.area
-    },
-    dot: {
-      ...style.dot
-    }
-  }
-
   return (
-    <svg
-      viewBox={viewBox}
-      preserveAspectRatio='none'
-      style={sx.root}>
-      {area && (
-        <Area
-          points={points}
-          xmin={x(0)}
-          ymin={y(min)}
-          fill={areaFill}
-          opacity={areaOpacity}
-          style={sx.area}
-        />
-      )}
+    <Svg {...props}>
       <path
         d={d}
         fill='none'
@@ -82,15 +47,14 @@ const Line = ({
       />
       {dots && (
         <Dots
-          points={points}
+          points={p}
           size={dotSize}
           color={dotColor || color}
           fill={dotFill}
           strokeWidth={strokeWidth}
-          style={sx.dot}
         />
       )}
-    </svg>
+    </Svg>
   )
 }
 

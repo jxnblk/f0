@@ -5,7 +5,7 @@ import {
   Chart,
   Group,
   Line,
-  Bars,
+  Bar,
   Rule,
   Rules,
   Div,
@@ -16,7 +16,8 @@ import Header from './Header'
 import BarDemo from './BarDemo'
 import DoubleBars from './DoubleBars'
 import BarsLine from './BarsLine'
-import Area from './Area'
+import AreaDemo from './AreaDemo'
+import Dev from './Dev'
 
 const blue = '#0077cc'
 const orange = '#ff5500'
@@ -28,7 +29,12 @@ const colors = {
 // Pattern buffer
 // Dematerialization margin
 
-const rand = n => Math.round(16 * Math.random())
+const rand = () => Math.round(16 * Math.random())
+
+const getData = (length) => {
+  // const length = rand()
+  return Array.from({ length }).map(rand)
+}
 
 const getColors = () => {
   const [ h, s ] = chroma.random().hsl()
@@ -47,14 +53,14 @@ class App extends React.Component {
   state = {
     count: 0,
     colors: getColors(),
-    logo: [
-      0, 16, 0, 16, 0, 16, 0, 16
-    ],
-    data: [
+    logo: getData(8),
+    data: getData(8),
+    neg: getData(8).map(n => -1 * n),
+    xdata: [
       3, 8, 4, 16,
       48, 32, 24, 24
     ],
-    neg: [
+    xneg: [
       -48, -32, -24, -24,
       -3, -8, -4, -16
     ]
@@ -87,11 +93,14 @@ class App extends React.Component {
 
     return (
       <div style={sx.root}>
+        <Dev {...this.state} />
+        {/*
         <Header {...this.state} />
         <BarDemo {...this.state} />
         <DoubleBars {...this.state} />
         <BarsLine {...this.state} />
-        <Area {...this.state} />
+        <AreaDemo {...this.state} />
+        */}
       </div>
     )
   }
