@@ -8,6 +8,8 @@ import BarDemo from './BarDemo'
 import DoubleBars from './DoubleBars'
 import BarsLine from './BarsLine'
 import AreaDemo from './AreaDemo'
+import Footer from './Footer'
+
 import Dev from './Dev'
 
 const blue = '#0077cc'
@@ -80,13 +82,14 @@ class App extends React.Component {
 
     return (
       <div style={sx.root}>
-        <Dev {...this.state} />
-        {/*
         <Header {...this.state} />
         <BarDemo {...this.state} />
         <DoubleBars {...this.state} />
         <BarsLine {...this.state} />
         <AreaDemo {...this.state} />
+        <Footer {...this.state} />
+        {/*
+        <Dev {...this.state} />
         */}
       </div>
     )

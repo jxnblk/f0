@@ -36,7 +36,7 @@ const Line = ({
 
   const d = points.map(({ x, padx, y }, i) => {
     const lx = pad ? padx : x
-    return `${command(i)} ${x} ${y}`
+    return `${command(i)} ${lx} ${y}`
   })
 
   return (

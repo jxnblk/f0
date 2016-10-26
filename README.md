@@ -3,9 +3,7 @@
 
 **WIP**
 
-Fully fluid responsive SVG charts for React
-
-Minimal, composable, fully-fluid SVG graphs for React
+Minimal, composable, fully-fluid SVG charts for React
 
 ## Getting Started
 
@@ -18,18 +16,18 @@ import React from 'react'
 import { Line, Bars } from 'f0'
 
 const App = () => {
-  const dataA = [
+  const a = [
     4, 8, 16, 32, 64
   ]
 
-  const dataB = [
+  const b = [
     8, 2, 32, 16, 4
   ]
 
   return (
     <div>
-      <Bars data={dataA} />
-      <Line data={dataB} />
+      <Bars data={a} />
+      <Line data={b} />
     </div>
   )
 }
@@ -47,24 +45,128 @@ export default App
 ## Components
 
 ### Line
+
+```js
+<Line
+  data={data}
+/>
+```
+
+```js
+<Line
+  data={data}
+  color='tomato'
+  strokeWidth={2}
+  dots
+/>
+```
+
 ### Area
+
+```js
+<Area
+  data={data}
+/>
+```
+
+```js
+<Area
+  data={data}
+  color='tomato'
+  opacity={1/2}
+/>
+```
+
 ### Bar
 
+```js
+<Bar
+  data={data}
+  />
+```
+
+```js
+<Bar
+  data={data}
+  color='tomato'
+  />
+```
+
 ### Svg
+
+```js
+<Svg>
+  <Bar data={a} />
+  <Line data={b} />
+</Svg>
+```
+
 ### Chart
 
+```js
+<Chart>
+  <Line data={data} />
+  <Axis
+    labels={[
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri'
+    ]}
+  />
+</Chart>
+```
+
 ### Rules
+
+```js
+<Svg>
+  <Rules y={5} />
+  <Line data={data} />
+</Svg>
+```
+
 ### Axis
+
+```js
+<Chart>
+  <Line data={data} />
+  <Axis
+    labels={[
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri'
+    ]}
+  />
+  <Axis
+    y
+    labels={[
+      32,
+      16,
+      0
+    ]}
+  />
+</Chart>
+```
+
 ### DataLabels
 
-## withScale HOC
-## getScale
+```js
+<Chart>
+  <Bar data={data} />
+  <DataLabels data={data} />
+</Chart>
+```
 
 ## Browser Support
 
+**Currently does not work in IE**
+
 The fluid style for these charts relies on SVG 1.2 vector-effect non-scaling-stroke.
 Modern evergreen browsers should support this feature, but charts may appear distorted in older browsers, including IE and Edge.
-
 
 [MIT License](/LICENSE.md)
 

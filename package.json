@@ -1,7 +1,7 @@
 {
   "name": "f0",
-  "version": "1.0.0-b2",
-  "description": "WIP Fully fluid responsive SVG charts for React",
+  "version": "1.0.0-b3",
+  "description": "Minimal, composable, fully-fluid SVG charts for React",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "mkdir -p dist && babel src --out-dir dist",

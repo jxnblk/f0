@@ -57,15 +57,16 @@ const Header = ({ logo, colors }) => {
                 dots
                 color='#fff'
                 dotSize={24}
-                dotFill={colors[3]}
+                dotFill={colors[2]}
               />
             </Svg>
           </div>
         )}
       </VictoryAnimation>
-      <p className='h3 bold'>
-        Fully fluid responsive SVG charts for React
+      <p className='h3 bold mb0'>
+        Minimal, composable, fully-fluid SVG charts for React
       </p>
+      <p className='h3 mt0 bold'>*WIP*</p>
       {/*
       <button>Tweet</button>
       <button>Star</button>
