@@ -1,17 +1,8 @@
 
+// Dematerialization margin
+
 import React from 'react'
 import chroma from 'chroma-js'
-import {
-  Chart,
-  Group,
-  Line,
-  Bar,
-  Rule,
-  Rules,
-  Div,
-  Label,
-  Labels,
-} from '../src'
 import Header from './Header'
 import BarDemo from './BarDemo'
 import DoubleBars from './DoubleBars'
@@ -26,15 +17,11 @@ const colors = {
   orange
 }
 
-// Pattern buffer
-// Dematerialization margin
-
 const rand = () => Math.round(16 * Math.random())
 
-const getData = (length) => {
-  // const length = rand()
-  return Array.from({ length }).map(rand)
-}
+const getData = (length) => (
+  Array.from({ length }).map(rand)
+)
 
 const getColors = () => {
   const [ h, s ] = chroma.random().hsl()

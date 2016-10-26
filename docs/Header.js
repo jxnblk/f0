@@ -3,7 +3,7 @@ import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Line,
-  Group,
+  Svg,
   Rules
 } from '../src'
 import { format } from 'd3-format'
@@ -47,7 +47,7 @@ const Header = ({ logo, colors }) => {
                 <div>{fl(data[data.length - 1])}</div>
               </div>
             </h1>
-            <Group height={192}>
+            <Svg height={192}>
               <Rules y={5} color={colors[1]} />
               <Line
                 data={data}
@@ -59,7 +59,7 @@ const Header = ({ logo, colors }) => {
                 dotSize={24}
                 dotFill={colors[3]}
               />
-            </Group>
+            </Svg>
           </div>
         )}
       </VictoryAnimation>

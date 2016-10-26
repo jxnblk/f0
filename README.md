@@ -1,9 +1,11 @@
 
 # f0
 
+**WIP**
+
 Fully fluid responsive SVG charts for React
 
-**WIP**
+Minimal, composable, fully-fluid SVG graphs for React
 
 ## Getting Started
 
@@ -38,18 +40,25 @@ export default App
 ## Features
 
 - Fully fluid charts with fixed heights
-- Bare bones API - only accepts flat arrays as data
 - Uses HTML for labels to prevent scaling issues
-- Low-level access to components for customization
+- Bare bones API - only accepts flat arrays as data
+- Low-level access to components for composition
 
 ## Components
 
 ### Line
-### Bars
-### Group
+### Area
+### Bar
+
+### Svg
 ### Chart
 
+### Rules
+### Axis
+### DataLabels
+
 ## withScale HOC
+## getScale
 
 ## Browser Support
 

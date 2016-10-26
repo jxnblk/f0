@@ -3,7 +3,7 @@ import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Chart,
-  Group,
+  Svg,
   Area
 } from '../src'
 import { fl } from './util'
@@ -49,7 +49,7 @@ const AreaDemo = ({
               </div>
             </h2>
             <Chart>
-              <Group>
+              <Svg>
                 <Area
                   data={logo}
                   min={0}
@@ -64,7 +64,7 @@ const AreaDemo = ({
                   color={colors[3]}
                   opacity={1/2}
                 />
-              </Group>
+              </Svg>
             </Chart>
           </div>
         )}

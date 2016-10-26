@@ -4,6 +4,8 @@ import getScale from './get-scale'
 import Div from './Div'
 import Label from './Label'
 
+// Split up or handle unpadded labels
+
 const XAxis = ({
   labels = [],
   rule,

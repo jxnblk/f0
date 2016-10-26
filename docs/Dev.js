@@ -6,7 +6,7 @@ import {
 } from 'victory'
 import {
   Chart,
-  Group,
+  Svg,
   Line,
   Area,
   Bar,
@@ -53,8 +53,17 @@ const Dev = ({
         {({ data, logo }) => (
           <div>
             <Chart style={{ marginBottom: 32 }}>
-              <Group>
+              <Svg>
+                <Area
+                  data={logo}
+                  min={0}
+                  max={16}
+                  color={colors[3]}
+                  opacity={1/2}
+                />
                 <Line
+                  dots
+                  dotFill='#fff'
                   style={sx.bars}
                   color={colors[1]}
                   data={logo}
@@ -62,7 +71,7 @@ const Dev = ({
                   max={16}
                 />
                 <Rules x={8} y={5} />
-              </Group>
+              </Svg>
             </Chart>
             <Chart style={{
               backgroundColor: '#f6f6f6'
@@ -75,7 +84,7 @@ const Dev = ({
                   4,
                   0
                 ]} />
-              <Group>
+              <Svg>
                 <Rules y={5} />
                 <Bar
                   style={sx.bars}
@@ -84,7 +93,7 @@ const Dev = ({
                   min={0}
                   max={16}
                 />
-              </Group>
+              </Svg>
               <DataLabels
                 data={data}
                 min={0}

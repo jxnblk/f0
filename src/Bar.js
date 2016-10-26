@@ -9,8 +9,6 @@ const Bar = ({
   scale,
   padWidth,
   points = [],
-  min,
-  max,
   color = 'currentcolor',
   ...props
 }) => {

@@ -14,11 +14,11 @@ const getScale = ({
   max,            // optional max value
   padRatio = 2,   // Ratio of bar width vs margin
 }) => {
-  const datamin = d3min(data) || 0
-  const datamax = d3max(data) || 0
+  const datamin = d3min(data)
+  const datamax = d3max(data)
 
-  min = isNum(min) && min < datamin ? min : datamin
-  max = isNum(max) && max < datamax ? max : datamax
+  min = isNum(min) && min < datamin ? min : datamin || 0
+  max = isNum(max) && max > datamax ? max : datamax || 100
   length = length || data.length
 
   const denominator = length * (padRatio + 1)

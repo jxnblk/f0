@@ -24,19 +24,23 @@ const Line = ({
   dotColor,
   dotFill,
   style = {},
-  ...props
+  children,
+  ...rest
 }) => {
   if (!points.length) return null
 
   const command = i => i === 0 ? 'M' : 'L'
 
+  // Remove after removing Dots
   const p = points.map(p => pad ? ({ ...p, x: p.padx }) : p)
-  const d = p.map(({ x, y }, i) => (
-    `${command(i)} ${x} ${y}`
-  ))
+
+  const d = points.map(({ x, padx, y }, i) => {
+    const lx = pad ? padx : x
+    return `${command(i)} ${x} ${y}`
+  })
 
   return (
-    <Svg {...props}>
+    <Svg {...rest}>
       <path
         d={d}
         fill='none'

@@ -2,7 +2,7 @@
 import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
-  Group,
+  Svg,
   Bar,
   Rules
 } from '../src'
@@ -47,7 +47,7 @@ const DoubleBars = ({
                 <div>{fl(data[data.length - 1])}</div>
               </div>
             </h2>
-            <Group>
+            <Svg>
               <Rules y={5} />
               <Bar
                 viewBox='0 0 100 200'
@@ -65,7 +65,7 @@ const DoubleBars = ({
                 min={-16}
                 max={0}
               />
-            </Group>
+            </Svg>
           </div>
         )}
       </VictoryAnimation>

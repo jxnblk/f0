@@ -8,10 +8,7 @@ const withScale = Comp => {
     viewBox,
     ...props
   }) => {
-    const w = 100
-    const h = 100
-
-    viewBox = viewBox || [ 0, 0, w, h ].join(' ')
+    viewBox = viewBox || [ 0, 0, 100, 100 ].join(' ')
 
     const {
       min,

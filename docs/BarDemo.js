@@ -1,12 +1,11 @@
-
 import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Chart,
-  Group,
+  Svg,
   Bar,
   Rules,
-  Labels
+  Axis
 } from '../src'
 import { fl } from './util'
 
@@ -50,17 +49,16 @@ const BarDemo = ({
               </div>
             </h2>
             <Chart>
-              <Group>
+              <Svg>
                 <Rules color={colors[0]} y={4} />
                 <Bar
                   data={data}
                   min={0}
                   max={16}
                 />
-              </Group>
-              <Labels
-                px={12}
-                x={[
+              </Svg>
+              <Axis
+                labels={[
                   'a',
                   'b',
                   'c',
