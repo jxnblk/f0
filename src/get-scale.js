@@ -17,8 +17,8 @@ const getScale = ({
   const datamin = d3min(data)
   const datamax = d3max(data)
 
-  min = isNum(min) && min < datamin ? min : datamin || 0
-  max = isNum(max) && max > datamax ? max : datamax || 100
+  min = isNum(min) && min <= datamin ? min : datamin || 0
+  max = isNum(max) && max >= datamax ? max : datamax || 100
   length = length || data.length
 
   const denominator = length * (padRatio + 1)

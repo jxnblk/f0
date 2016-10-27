@@ -11,6 +11,7 @@ import AreaDemo from './AreaDemo'
 import Footer from './Footer'
 
 import Dev from './Dev'
+import Controls from './Controls'
 
 const blue = '#0077cc'
 const orange = '#ff5500'
@@ -68,6 +69,10 @@ class App extends React.Component {
     })
   }
 
+  onChange = obj => {
+    this.setState(obj)
+  }
+
   componentDidMount () {
     setInterval(this.randomize, 2000)
   }
@@ -89,7 +94,8 @@ class App extends React.Component {
         <AreaDemo {...this.state} />
         <Footer {...this.state} />
         {/*
-        <Dev {...this.state} />
+          <Dev {...this.state} />
+          <Controls {...this.state} onChange={this.onChange} />
         */}
       </div>
     )

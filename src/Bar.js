@@ -19,7 +19,8 @@ const Bar = ({
     const hi = d === 0
       ? 0
       : d > 0 ? 100 - y : y
-    const by = d > 0 ? y : 0
+    const by = d >= 0 ? y : 0
+
     return (
       <rect
         key={i}
