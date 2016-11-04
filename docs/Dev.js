@@ -22,6 +22,9 @@ import {
 } from '../src'
 import { fl } from './util'
 
+// Testing withHover
+import Hoverable from '../src/Hoverable'
+
 const Dev = ({
   data,
   neg,
@@ -72,7 +75,13 @@ const Dev = ({
                 />
                 <Rules x={8} y={5} />
               </Svg>
+              <Hoverable />
             </Chart>
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr />
             <Chart style={{
               backgroundColor: '#f6f6f6'
             }}>

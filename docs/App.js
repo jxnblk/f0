@@ -13,6 +13,8 @@ import Footer from './Footer'
 import Dev from './Dev'
 import Controls from './Controls'
 
+const DEV = true
+
 const blue = '#0077cc'
 const orange = '#ff5500'
 const colors = {
@@ -85,6 +87,15 @@ class App extends React.Component {
       }
     }
 
+    if (DEV) {
+      return (
+        <div>
+          <Dev {...this.state} />
+          <Controls {...this.state} onChange={this.onChange} />
+        </div>
+      )
+    }
+
     return (
       <div style={sx.root}>
         <Header {...this.state} />
@@ -93,10 +104,6 @@ class App extends React.Component {
         <BarsLine {...this.state} />
         <AreaDemo {...this.state} />
         <Footer {...this.state} />
-        {/*
-          <Dev {...this.state} />
-          <Controls {...this.state} onChange={this.onChange} />
-        */}
       </div>
     )
   }
