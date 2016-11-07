@@ -1,5 +1,6 @@
 
 import React from 'react'
+import withScale from './withScale'
 import withHover from './withHover'
 
 const Hoverable = ({
@@ -7,6 +8,7 @@ const Hoverable = ({
   x,
   y,
   datum,
+  active,
   ...props
 }) => {
   const sx = {
@@ -23,9 +25,9 @@ const Hoverable = ({
     <div
       {...props}
       style={sx}
-      children={`x: ${x}\ny: ${y} ${hovering ? '\nhovering' : ''}`} />
+      children={`x: ${x}\ny: ${y} ${hovering ? '\nhovering' : ''} ${active ? 'active' : ''}`} />
   )
 }
 
-export default withHover(Hoverable)
+export default withScale(withHover(Hoverable))
 

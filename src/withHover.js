@@ -7,6 +7,7 @@ const withHover = Comp => {
       hovering: false,
       x: null,
       y: null,
+      active: null,
       datum: null
     }
 
@@ -18,15 +19,20 @@ const withHover = Comp => {
 
     onMouseMove = e => {
       const { offsetX, offsetY } = e.nativeEvent
+      const { scale, padWidth } = this.props
+      const active = scale && scale.padx ?
+        1 : null
       this.setState({
         x: offsetX,
         y: offsetY,
+        active
       })
     }
 
     onMouseLeave = e => {
       this.setState({
-        hovering: false
+        hovering: false,
+        active: null
       })
     }
 

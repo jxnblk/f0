@@ -75,7 +75,9 @@ const Dev = ({
                 />
                 <Rules x={8} y={5} />
               </Svg>
-              <Hoverable />
+              <Hoverable
+                data={logo}
+              />
             </Chart>
             <br />
             <br />
@@ -101,6 +103,10 @@ const Dev = ({
                   data={data}
                   min={0}
                   max={16}
+                  active={2}
+                  activeStyle={{
+                    fill: colors[1]
+                  }}
                 />
               </Svg>
               <DataLabels

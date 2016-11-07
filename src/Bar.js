@@ -10,6 +10,8 @@ const Bar = ({
   padWidth,
   points = [],
   color = 'currentcolor',
+  active,
+  activeStyle,
   ...props
 }) => {
   if (!points.length) return null
@@ -21,6 +23,10 @@ const Bar = ({
       : d > 0 ? 100 - y : y
     const by = d >= 0 ? y : 0
 
+    const style = i === active ? activeStyle || {
+      fill: 'black',
+    } : null
+
     return (
       <rect
         key={i}
@@ -28,6 +34,8 @@ const Bar = ({
         y={by}
         width={padWidth}
         height={hi}
+        vectorEffect='non-scaling-stroke'
+        style={style}
       />
     )
   })
