@@ -17,14 +17,19 @@ const withScale = Comp => {
       padWidth
     } = getScale({ data, ...props })
 
-    const points = data.map((d, i) => {
-      return {
-        d,
-        x: scale.x(i),
-        padx: scale.padx(i),
-        y: scale.y(d)
-      }
-    })
+    const points = data
+      .map((d, i) => {
+        if (d === null) {
+          return null
+        }
+        return {
+          d,
+          x: scale.x(i),
+          padx: scale.padx(i),
+          y: scale.y(d)
+        }
+      })
+      .filter(p => p !== null)
 
     return (
       <Comp

@@ -11,7 +11,8 @@ const XAxis = ({
   rule,
   scale,
   padWidth,
-  style
+  style,
+  color
 }) => {
   const sx = {
     root: {
@@ -19,16 +20,17 @@ const XAxis = ({
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       position: 'relative',
-      minHeight: 32,
+      minHeight: 24,
       marginTop: rule ? -1 : null,
       borderTop: rule ? '1px solid' : null,
+      color: color,
       ...style
     },
     label: {
       textAlign: 'center',
       flexBasis: padWidth + '%',
-      paddingTop: 8,
-      paddingBottom: 8,
+      paddingTop: 4,
+      paddingBottom: 4,
     }
   }
 
@@ -51,7 +53,8 @@ const XAxis = ({
 const YAxis = ({
   labels = [],
   rule,
-  ...style
+  style,
+  color,
 }) => {
   const sx = {
     root: {
@@ -60,6 +63,7 @@ const YAxis = ({
       left: 0,
       bottom: 0,
       borderLeft: rule ? '1px solid' : null,
+      color: color,
       ...style
     },
     label: {
@@ -71,7 +75,7 @@ const YAxis = ({
       {labels.map((label, i) => (
         <Div
           key={i}
-          y={i / (labels.length - 1) * 100}>
+          y={i / (labels.length - 1) * 100 - 20}>
           <Label
             style={sx.label}
             children={label} />

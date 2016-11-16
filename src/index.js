@@ -5,6 +5,7 @@ import Line from './Line'
 import Area from './Area'
 import Bar from './Bar'
 import Rules from './Rules'
+import Dot from './Dot'
 
 // HTML
 import Chart from './Chart'
@@ -20,6 +21,7 @@ export { default as Line } from './Line'
 export { default as Area } from './Area'
 export { default as Bar } from './Bar'
 export { default as Rules } from './Rules'
+export { default as Dot } from './Dot'
 
 export { default as Chart } from './Chart'
 export { default as Axis } from './Axis'
@@ -36,6 +38,7 @@ export default {
   Chart,
   Axis,
   Rules,
+  Dot,
   DataLabels,
   getScale,
   withScale
