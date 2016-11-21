@@ -128,6 +128,7 @@ const Dev = ({
                 'H'
               ]} />
             <Area
+              pad
               style={sx.bars}
               color={colors[1]}
               data={logo}

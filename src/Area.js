@@ -7,6 +7,7 @@ const Area = ({
   points = [],
   color = 'currentcolor',
   opacity = 1,
+  pad,
   padWidth,
   ...props
 }) => {
@@ -15,10 +16,12 @@ const Area = ({
   const command = i => i === 0 ? 'M' : 'L'
 
   const d = [
-    ...points.map(({ x, y }, i) => (
+    ...points
+    .map(p => pad ? ({ ...p, x: p.padx }) : p)
+    .map(({ x, y }, i) => (
       `${command(i)} ${x} ${y}`
     )),
-    `V100 H0 z`
+    (pad ? `V100 H${points[0].padx} z` : `V100 H0 z`)
   ]
 
   return (
