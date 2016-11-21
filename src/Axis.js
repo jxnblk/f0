@@ -75,7 +75,7 @@ const YAxis = ({
       {labels.map((label, i) => (
         <Div
           key={i}
-          y={i / (labels.length - 1) * 100 - 20}>
+          y={i / (labels.length - 1) * 100}>
           <Label
             style={sx.label}
             children={label} />
