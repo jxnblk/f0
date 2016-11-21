@@ -1,6 +1,6 @@
 {
   "name": "f0",
-  "version": "1.0.0-b5",
+  "version": "1.0.0-b6",
   "description": "Minimal, composable, fully-fluid SVG charts for React",
   "main": "dist/index.js",
   "scripts": {
