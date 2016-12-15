@@ -1,35 +1,26 @@
 
 import React from 'react'
+import withScale from './withScale'
 import Svg from './Svg'
 import Dot from './Dot'
+import { padPoints } from './utils'
 
 const Dots = ({
-  points = [],
+  scale,
+  points,
+  labels,
   pad,
+
   color,
   size,
   fill,
   strokeWidth,
-  style,
   ...rest
 }) => {
-  const sx = {
-    root: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      ...style
-    }
-  }
-
-  const paddedPoints = points.map(p => pad
-    ? ({ ...p, x: p.pad.x })
-    : p)
+  const paddedPoints = pad ? padPoints(points) : points
 
   return (
-    <Svg {...rest} style={sx.root}>
+    <Svg {...rest}>
       {paddedPoints.map(({ x, y }, i) => (
         <Dot
           key={i}
@@ -46,5 +37,5 @@ const Dots = ({
   )
 }
 
-export default Dots
+export default withScale(Dots)
 

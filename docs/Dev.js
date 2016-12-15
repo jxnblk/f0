@@ -11,6 +11,7 @@ import {
   Area,
   Bar,
   Rules,
+  Dots,
 
   XAxis,
   YAxis,
@@ -59,6 +60,10 @@ const Dev = ({
                   opacity={1/2}
                 />
                 <Line color={colors[1]} />
+                <Dots
+                  fill='white'
+                  strokeWidth={3}
+                  color={colors[1]} />
               </Group>
               <Rules y={3} />
               <XAxis />
@@ -80,11 +85,18 @@ const Dev = ({
               max={16}
             />
 
-            {/*
             <Chart style={{
+              marginTop: 64,
               backgroundColor: '#f6f6f6'
             }}>
-              <Axis y
+              <Bar
+                style={sx.bars}
+                color={colors[2]}
+                data={data}
+                min={0}
+                max={16}
+              />
+              <YAxis
                 labels={[
                   16,
                   12,
@@ -92,16 +104,7 @@ const Dev = ({
                   4,
                   0
                 ]} />
-              <Svg>
-                <Rules y={5} />
-                <Bar
-                  style={sx.bars}
-                  color={colors[2]}
-                  data={data}
-                  min={0}
-                  max={16}
-                />
-              </Svg>
+              <Rules y={5} />
               <DataLabels
                 data={data}
                 min={0}
@@ -109,18 +112,6 @@ const Dev = ({
                 format={fl}
               />
             </Chart>
-            <Axis rule
-              labels={[
-                'A',
-                'B',
-                'C',
-                'D',
-                'E',
-                'F',
-                'G',
-                'H'
-              ]} />
-            */}
 
             {/*
             <Area
