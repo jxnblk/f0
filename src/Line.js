@@ -2,28 +2,25 @@
 import React from 'react'
 import withScale from './withScale'
 import Svg from './Svg'
-import Dots from './Dots'
+import { padPoints } from './utils'
 
 const isNum = n => !isNaN(n)
 
 const Line = ({
   scale,
   points = [],
-  min,
-  max,
-  pad,
-  padWidth,
+  labels,
+
+  // min,
+  // max,
+  // padWidth,
 
   color = 'currentcolor',
   strokeWidth = 3,
   strokeLinecap = 'round',
 
-  // Should this be an object?
-  dots,
-  dotSize,
-  dotColor,
-  dotFill,
-  style = {},
+  pad,
+  style,
   children,
   ...rest
 }) => {
@@ -31,16 +28,21 @@ const Line = ({
 
   const command = i => i === 0 ? 'M' : 'L'
 
-  // Remove after removing Dots
-  const p = points.map(p => pad ? ({ ...p, x: p.padx }) : p)
+  const paddedPoints = pad ? padPoints(points) : points
 
-  const d = points.map(({ x, padx, y }, i) => {
-    const lx = pad ? padx : x
-    return `${command(i)} ${lx} ${y}`
+  const d = paddedPoints.map(({ x, y }, i) => {
+    return `${command(i)} ${x} ${y}`
   })
 
+  const sx = {
+    root: {
+      position: 'relative',
+      ...style
+    }
+  }
+
   return (
-    <Svg {...rest}>
+    <Svg {...rest} style={sx.root}>
       <path
         d={d}
         fill='none'
@@ -49,15 +51,6 @@ const Line = ({
         strokeWidth={strokeWidth}
         strokeLinecap={strokeLinecap}
       />
-      {dots && (
-        <Dots
-          points={p}
-          size={dotSize}
-          color={dotColor || color}
-          fill={dotFill}
-          strokeWidth={strokeWidth}
-        />
-      )}
     </Svg>
   )
 }

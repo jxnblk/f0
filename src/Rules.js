@@ -2,58 +2,67 @@
 import React from 'react'
 import Svg from './Svg'
 import Rule from './Rule'
-import getScale from './get-scale'
+import withScale from './withScale'
+import { createArray } from './utils'
 
 const Rules = ({
   x = 0,
   y,
   pad,
-  strokeWidth = 1,
-  color,
-  opacity,
-  ...props
+  style,
+
+  scale,
+  points,
+  labels,
+
+  ...rest
 }) => {
   if (x < 1 && y < 1) return null
 
-  const viewBox = [ 0, 0, 100, 100 ].join(' ')
+  x = x === true
+    ? points.length || 0
+    : x
 
-  const { scale } = getScale({ length: x })
-  const scalex = pad ? scale.padx : scale.x
-
-  const xrules = Array.from({ length: x })
-    .map((n, i) => i)
+  const xRules = createArray(x)
     .map(n => (
       <Rule
+        {...rest}
         key={n}
-        x={scalex(n)}
-        strokeWidth={strokeWidth}
-        color={color}
-        opacity={opacity}
+        x={scale.x(n)}
       />
     ))
 
-  const yrules = Array.from({ length: y })
-    .map((n, i) => i)
+  // To do:
+  // y = y || labels.y.length || 0
+
+  const yRules = createArray(y)
     .map(n => {
       const step = n / (y - 1) * 100
       return (
         <Rule
+          {...rest}
           key={n}
           y={step}
-          strokeWidth={strokeWidth}
-          color={color}
-          opacity={opacity}
         />
       )
     })
 
+  const sx = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...style
+  }
+
   return (
-    <Svg {...props}>
-      {xrules}
-      {yrules}
+    <Svg {...rest} style={sx}>
+      {xRules}
+      {yRules}
     </Svg>
   )
 }
 
-export default Rules
+export default withScale(Rules)
 

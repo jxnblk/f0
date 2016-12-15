@@ -1,7 +1,6 @@
 
 import React from 'react'
-
-const isNum = n => n !== null && !isNaN(n)
+import { isNum } from './utils'
 
 const Rule = ({
   x,

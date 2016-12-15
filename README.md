@@ -170,3 +170,31 @@ Modern evergreen browsers should support this feature, but charts may appear dis
 
 [MIT License](/LICENSE.md)
 
+---
+
+## Beta 5 Notes
+
+```jsx
+// Example Usage
+<Chart
+  data={data}
+  min={0}
+  format={formatData}
+  niceCount={3}>
+  <Rules x y />
+  <Line />
+  <Dots />
+  <YAxis />
+  <XAxis labels={labels.x} />
+  <Tooltip />
+</Chart>
+```
+
+```jsx
+<Chart min={0}>
+  <Rules y />
+  <Bar data={data.a} />
+  <Line data={data.b} />
+</Chart>
+```
+

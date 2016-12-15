@@ -1,6 +1,8 @@
 
 // Dematerialization margin
 
+const _dev = 1
+
 import React from 'react'
 import chroma from 'chroma-js'
 import Header from './Header'
@@ -85,6 +87,15 @@ class App extends React.Component {
       }
     }
 
+    if (_dev) {
+      return (
+        <div style={sx.root}>
+          <Dev {...this.state} />
+          <Controls {...this.state} onChange={this.onChange} />
+        </div>
+      )
+    }
+
     return (
       <div style={sx.root}>
         <Header {...this.state} />
@@ -93,10 +104,6 @@ class App extends React.Component {
         <BarsLine {...this.state} />
         <AreaDemo {...this.state} />
         <Footer {...this.state} />
-        {/*
-          <Dev {...this.state} />
-          <Controls {...this.state} onChange={this.onChange} />
-        */}
       </div>
     )
   }

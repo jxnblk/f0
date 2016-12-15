@@ -6,19 +6,15 @@ import {
 } from 'victory'
 import {
   Chart,
-  Svg,
+  Group,
   Line,
   Area,
   Bar,
   Rules,
 
-  Axis,
-  DataLabels,
-
   XAxis,
-  Label,
-
-  Labels
+  YAxis,
+  DataLabels,
 } from '../src'
 import { fl } from './util'
 
@@ -52,27 +48,39 @@ const Dev = ({
         }}>
         {({ data, logo }) => (
           <div>
-            <Chart style={{ marginBottom: 32 }}>
-              <Svg>
+            <Chart
+              data={logo}
+              pad
+              min={0}
+              max={16}>
+              <Group>
                 <Area
-                  data={logo}
-                  min={0}
-                  max={16}
                   color={colors[3]}
                   opacity={1/2}
                 />
-                <Line
-                  dots
-                  dotFill='#fff'
-                  style={sx.bars}
-                  color={colors[1]}
-                  data={logo}
-                  min={0}
-                  max={16}
-                />
-                <Rules x={8} y={5} />
-              </Svg>
+                <Line color={colors[1]} />
+              </Group>
+              <Rules y={3} />
+              <XAxis />
+              <YAxis />
             </Chart>
+            <Bar
+              data={logo}
+              min={0}
+              max={16}
+            />
+            <Line
+              data={logo}
+              min={0}
+              max={16}
+            />
+            <Area
+              data={logo}
+              min={0}
+              max={16}
+            />
+
+            {/*
             <Chart style={{
               backgroundColor: '#f6f6f6'
             }}>
@@ -112,6 +120,9 @@ const Dev = ({
                 'G',
                 'H'
               ]} />
+            */}
+
+            {/*
             <Area
               style={sx.bars}
               color={colors[1]}
@@ -119,6 +130,7 @@ const Dev = ({
               min={0}
               max={16}
             />
+            */}
           </div>
         )}
       </VictoryAnimation>

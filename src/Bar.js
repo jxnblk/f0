@@ -1,21 +1,22 @@
 
-// Rename to Bar
-
 import React from 'react'
 import withScale from './withScale'
 import Svg from './Svg'
 
 const Bar = ({
   scale,
-  padWidth,
-  points = [],
+  points,
+  labels,
+  pad,
+
   color = 'currentcolor',
-  ...props
+  style,
+  ...rest
 }) => {
   if (!points.length) return null
 
-  const bars = points.map(({ padx, y, d }, i) => {
-    const bx = padx - padWidth / 2
+  const bars = points.map(({ pad, y, d }, i) => {
+    const bx = pad.x - pad.width / 2
     const hi = d === 0
       ? 0
       : d > 0 ? 100 - y : y
@@ -26,16 +27,22 @@ const Bar = ({
         key={i}
         x={bx}
         y={by}
-        width={padWidth}
+        width={pad.width}
         height={hi}
       />
     )
   })
 
+  const sx = {
+    position: 'relative',
+    ...style
+  }
+
   return (
     <Svg
-      {...props}
+      {...rest}
       fill={color}
+      style={sx}
       children={bars}
     />
   )
