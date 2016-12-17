@@ -30,7 +30,6 @@ const Dots = ({
           color={color}
           fill={fill}
           strokeWidth={strokeWidth}
-          style={style}
         />
       ))}
     </Svg>

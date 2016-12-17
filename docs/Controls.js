@@ -1,8 +1,7 @@
 
 import React from 'react'
-import {
-  Slider
-} from 'rebass'
+// Replace with Axs
+import { Slider } from 'rebass'
 
 const Controls = props => {
   const {

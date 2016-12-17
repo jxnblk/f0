@@ -6,7 +6,6 @@ import Label from './Label'
 
 const DataLabels = ({
   scale,
-  padWidth,
   pad,
   points = [],
   min,
@@ -17,7 +16,7 @@ const DataLabels = ({
   const sx = {
     root: {},
     div: {
-      width: padWidth + '%'
+      width: scale.pad.width + '%'
     },
     label: {
       width: '100%',
@@ -25,8 +24,8 @@ const DataLabels = ({
     }
   }
 
-  const labels = points.map(({ x, padx, y, d }, i) => {
-    const lx = padx - padWidth / 2
+  const labels = points.map(({ x, pad, y, d }, i) => {
+    const lx = pad.x - pad.width / 2
     const ly = y
     return (
       <Div key={i} x={lx} y={ly}

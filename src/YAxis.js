@@ -7,7 +7,7 @@ import withScale from './withScale'
 const YAxis = ({
   scale,
   points,
-  labels, // Update old labels prop
+  labels,
   pad,
 
   rule,

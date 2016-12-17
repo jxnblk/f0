@@ -8,6 +8,7 @@ const Chart = ({
   style,
   children,
   pad,
+  niceCount,
 
   scale,
   points,
@@ -26,7 +27,8 @@ const Chart = ({
     scale,
     points,
     labels,
-    pad
+    pad,
+    height
   })
 
   return (

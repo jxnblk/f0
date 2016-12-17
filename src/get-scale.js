@@ -63,8 +63,8 @@ const getScale = ({
 
   // To do:
   const labels = {
-    x: ['hello', 'hi' ],
-    y: []
+    // x: [],
+    y: niceCount ? scale.y.ticks(niceCount).reverse() : []
   }
 
   return {

@@ -16,6 +16,10 @@ const XAxis = ({
 }) => {
   const xLabels = getLabels(labels)
 
+  const labelWidth = scale
+    ? scale.pad.width + '%'
+    : (100 / xLabels.length) + '%'
+
   const sx = {
     root: {
       display: 'flex',
@@ -29,7 +33,7 @@ const XAxis = ({
     },
     label: {
       textAlign: 'center',
-      flexBasis: scale.pad.width + '%',
+      flexBasis: labelWidth,
       paddingTop: 8,
       paddingBottom: 8,
 

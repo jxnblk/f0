@@ -2,8 +2,10 @@
 import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
+  Chart,
+  Group,
   Line,
-  Svg,
+  Dots,
   Rules
 } from '../src'
 import { format } from 'd3-format'
@@ -47,19 +49,27 @@ const Header = ({ logo, colors }) => {
                 <div>{fl(data[data.length - 1])}</div>
               </div>
             </h1>
-            <Svg height={192}>
+            <Chart height={192}>
               <Rules y={5} color={colors[1]} />
-              <Line
-                data={data}
-                min={0}
-                max={16}
-                strokeWidth={6}
-                dots
-                color='#fff'
-                dotSize={24}
-                dotFill={colors[2]}
-              />
-            </Svg>
+              <Group>
+                <Line
+                  data={data}
+                  min={0}
+                  max={16}
+                  strokeWidth={6}
+                  color='#fff'
+                />
+                <Dots
+                  data={data}
+                  min={0}
+                  max={16}
+                  size={24}
+                  strokeWidth={6}
+                  color='#fff'
+                  fill={colors[2]}
+                />
+              </Group>
+            </Chart>
           </div>
         )}
       </VictoryAnimation>

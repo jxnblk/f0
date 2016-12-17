@@ -1,10 +1,13 @@
 
 import React from 'react'
+import { sum } from 'd3-array'
 import { VictoryAnimation } from 'victory'
 import {
-  Svg,
+  Chart,
+  Group,
   Bar,
   Line,
+  Dots,
   Rules
 } from '../src'
 import { fl } from './util'
@@ -40,7 +43,7 @@ const DoubleBars = ({
         duration={750}
         data={{ data, neg }}>
         {({ data, neg }) => {
-          const line = data.map((d, i) => d + neg[i])
+          const line = data.map((d, i) => sum([ d, neg[i] ]))
 
           return (
             <div>
@@ -52,7 +55,7 @@ const DoubleBars = ({
                   <div>{fl(line[line.length - 1])}</div>
                 </div>
               </h2>
-              <Svg>
+              <Group>
                 <Bar
                   height={128}
                   viewBox='0 0 100 200'
@@ -72,14 +75,20 @@ const DoubleBars = ({
                 <Line
                   data={line}
                   pad
-                  dots
-                  dotFill={colors[3]}
-                  dotSize={16}
                   color='#fff'
                   min={-16}
                   max={16}
                 />
-              </Svg>
+                <Dots
+                  data={line}
+                  pad
+                  fill={colors[3]}
+                  size={16}
+                  color='#fff'
+                  min={-16}
+                  max={16}
+                />
+              </Group>
             </div>
           )
         }}

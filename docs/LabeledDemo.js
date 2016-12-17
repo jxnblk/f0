@@ -4,20 +4,22 @@ import { VictoryAnimation } from 'victory'
 import {
   Chart,
   Group,
-  Bar,
-  Rules
+  Line,
+  Dots,
+  Rules,
+  XAxis,
+  YAxis
 } from '../src'
 import { fl } from './util'
 
-const DoubleBars = ({
+const LabeledDemo = ({
   data,
-  neg,
   colors
 }) => {
   const sx = {
     root: {
-      color: '#fff',
-      backgroundColor: colors[3],
+      color: colors[1],
+      backgroundColor: colors[4],
       transitionProperty: 'color, background-color, fill',
       transitionDuration: '.2s, .8s',
       transitionTimingFunction: 'ease-out'
@@ -31,43 +33,50 @@ const DoubleBars = ({
       flex: '1 1 auto'
     }
   }
+
   return (
     <section
       className='pl3 pr3 pt6 pb6'
       style={sx.root}>
       <VictoryAnimation
         duration={750}
-        data={{ data, neg }}>
-        {({ data, neg }) => (
+        data={{ data }}>
+        {({ data }) => (
           <div>
             <h2 className='h1 xh0 mt0 mb3 mono' style={sx.title}>
-              <div>Bar</div>
+              <div>Axes</div>
               <div style={sx.space} />
               <div>
-                <div className='h5 right-align'>Time dilation</div>
+                <div className='h5 right-align'>Dematerialization</div>
                 <div>{fl(data[data.length - 1])}</div>
               </div>
             </h2>
-            <Chart>
-              <Rules y={5} />
+            <Chart
+              data={data}
+              min={0}
+              max={16}
+              pad
+              niceCount={3}
+            >
+              <Rules color={colors[0]} />
               <Group>
-                <Bar
-                  viewBox='0 0 100 200'
-                  height={128}
-                  data={data}
-                  min={0}
-                  max={16}
-                />
-                <Bar
-                  viewBox='0 0 100 200'
-                  y={50}
-                  height={128}
-                  color={colors[2]}
-                  data={neg}
-                  min={-16}
-                  max={0}
-                />
+                <Line />
+                <Dots />
               </Group>
+              <XAxis
+                rule
+                labels={[
+                  'A',
+                  'B',
+                  'C',
+                  'D',
+                  'E',
+                  'F',
+                  'G',
+                  'H',
+                ]}
+              />
+              <YAxis />
             </Chart>
           </div>
         )}
@@ -76,5 +85,5 @@ const DoubleBars = ({
   )
 }
 
-export default DoubleBars
+export default LabeledDemo
 

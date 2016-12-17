@@ -51,9 +51,9 @@ const Dev = ({
           <div>
             <Chart
               data={logo}
-              pad
+              niceCount={3}
               min={0}
-              max={16}>
+            >
               <Group>
                 <Area
                   color={colors[3]}
@@ -65,7 +65,7 @@ const Dev = ({
                   strokeWidth={3}
                   color={colors[1]} />
               </Group>
-              <Rules y={3} />
+              <Rules />
               <XAxis />
               <YAxis />
             </Chart>
@@ -113,7 +113,6 @@ const Dev = ({
               />
             </Chart>
 
-            {/*
             <Area
               style={sx.bars}
               color={colors[1]}
@@ -121,7 +120,6 @@ const Dev = ({
               min={0}
               max={16}
             />
-            */}
           </div>
         )}
       </VictoryAnimation>

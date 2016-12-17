@@ -1,7 +1,7 @@
 
 // Dematerialization margin
 
-const _dev = 1
+const _dev = 0
 
 import React from 'react'
 import chroma from 'chroma-js'
@@ -10,6 +10,7 @@ import BarDemo from './BarDemo'
 import DoubleBars from './DoubleBars'
 import BarsLine from './BarsLine'
 import AreaDemo from './AreaDemo'
+import LabeledDemo from './LabeledDemo'
 import Footer from './Footer'
 
 import Dev from './Dev'
@@ -23,6 +24,8 @@ const colors = {
 }
 
 const rand = () => Math.round(16 * Math.random())
+// const max = 1024
+// const rand = () => max * Math.random()
 
 const getData = (length) => (
   Array.from({ length }).map(rand)
@@ -103,6 +106,7 @@ class App extends React.Component {
         <DoubleBars {...this.state} />
         <BarsLine {...this.state} />
         <AreaDemo {...this.state} />
+        <LabeledDemo {...this.state} />
         <Footer {...this.state} />
       </div>
     )
