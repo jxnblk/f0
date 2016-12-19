@@ -23,8 +23,6 @@ const colors = {
 }
 
 const rand = () => Math.round(16 * Math.random())
-// const max = 1024
-// const rand = () => max * Math.random()
 
 const getData = (length) => (
   Array.from({ length }).map(rand)

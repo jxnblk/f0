@@ -6,7 +6,8 @@
   "scripts": {
     "prepublish": "mkdir -p dist && babel src --out-dir dist",
     "start": "webpack-dev-server",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test": "ava test"
   },
   "keywords": [
     "charts",
@@ -43,5 +44,11 @@
     "d3-array": "^1.0.1",
     "d3-scale": "^1.0.3",
     "recompose": "^0.21.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   }
 }
