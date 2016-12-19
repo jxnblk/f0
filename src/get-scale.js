@@ -2,13 +2,16 @@
 import { scaleLinear } from 'd3-scale'
 import { extent } from 'd3-array'
 
+/*
+ * Parses data props and returns a D3 scale
+ */
+
 const getScale = ({
   data,
-  length,         // Optional length
-  min,            // optional min value
-  max,            // optional max value
-  padRatio = 2,   // Ratio of bar width vs margin
-  niceCount,      // Count argument for D3 nice function
+  min,
+  max,
+  padRatio = 2,
+  niceCount,
 }) => {
   if (!data) return null
 
@@ -16,13 +19,12 @@ const getScale = ({
 
   min = getMin(min, dataMin)
   max = getMax(max, dataMax)
-  length = length || data.length
 
-  const denominator = length * (padRatio + 1)
+  const denominator = data.length * (padRatio + 1)
   const pad = 1 / denominator * 100
   const padWidth = padRatio / denominator * 100
 
-  const xdomain = ([ 0, length - 1 ])
+  const xdomain = ([ 0, data.length - 1 ])
   const x = scaleLinear()
     .domain(xdomain)
     .range([ 0, 100 ])
