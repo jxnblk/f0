@@ -1,7 +1,5 @@
 
-// Dematerialization margin
-
-const _dev = 1
+const _dev = 0
 
 import React from 'react'
 import chroma from 'chroma-js'
@@ -11,6 +9,7 @@ import DoubleBars from './DoubleBars'
 import BarsLine from './BarsLine'
 import AreaDemo from './AreaDemo'
 import LabeledDemo from './LabeledDemo'
+import HoverDemo from './HoverDemo'
 import Footer from './Footer'
 
 import Dev from './Dev'
@@ -79,7 +78,7 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    setInterval(this.randomize, 20000)
+    setInterval(this.randomize, 2000)
   }
 
   render () {
@@ -107,6 +106,7 @@ class App extends React.Component {
         <BarsLine {...this.state} />
         <AreaDemo {...this.state} />
         <LabeledDemo {...this.state} />
+        <HoverDemo {...this.state} />
         <Footer {...this.state} />
       </div>
     )

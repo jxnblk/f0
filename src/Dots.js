@@ -11,7 +11,7 @@ const Dots = ({
   labels,
   pad,
 
-  hoverPoint,
+  hoverPoint = {},
   mouse,
 
   color,
