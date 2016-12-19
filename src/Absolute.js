@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-const Div = ({
+const Absolute = ({
   x = 0,
   y = 0,
   top,
@@ -33,5 +33,5 @@ const Div = ({
   )
 }
 
-export default Div
+export default Absolute
 

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Label from './Label'
-import Div from './Div' // Rename to Absolute
+import Absolute from './Absolute'
 import withScale from './withScale'
 
 const YAxis = ({
@@ -36,13 +36,13 @@ const YAxis = ({
       {yLabels.map((label, i) => {
         const y = i / (yLabels.length - 1) * 100
         return (
-          <Div
+          <Absolute
             key={i}
             y={y}>
             <Label
               style={sx.label}
               children={format(label)} />
-          </Div>
+          </Absolute>
         )
       })}
     </div>

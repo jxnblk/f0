@@ -1,7 +1,7 @@
 
 import React from 'react'
 import withScale from './withScale'
-import Div from './Div'
+import Absolute from './Absolute'
 import Label from './Label'
 
 const DataLabels = ({
@@ -28,14 +28,14 @@ const DataLabels = ({
     const lx = pad.x - pad.width / 2
     const ly = y
     return (
-      <Div key={i} x={lx} y={ly}
+      <Absolute key={i} x={lx} y={ly}
         top
         style={sx.div}>
         <Label
           style={sx.label}
           children={format(d)}
         />
-      </Div>
+      </Absolute>
     )
   })
 

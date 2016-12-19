@@ -1,6 +1,7 @@
 
 import React from 'react'
-import Div from './Div'
+import Absolute from './Absolute'
+import Label from './Label'
 
 const Tooltip = ({
   scale,
@@ -9,6 +10,7 @@ const Tooltip = ({
 
   hovering,
   mouse,
+  style,
   ...props
 }) => {
   if (!hovering) return null
@@ -17,12 +19,30 @@ const Tooltip = ({
   const point = points[index]
   const { x, y } = point
 
+  const sx = {
+    paddingTop: 2,
+    paddingBottom: 2,
+    paddingLeft: 8,
+    paddingRight: 8,
+    marginBottom: 8,
+    borderRadius: 2,
+    color: '#fff',
+    backgroundColor: 'currentcolor',
+    ...style
+  }
+
   return (
-    <Div
+    <Absolute
+      top
+      center
       x={x}
       y={y}>
-      <pre>{point.d}</pre>
-    </Div>
+      <div style={sx}>
+        <Label>
+          {point.d}
+        </Label>
+      </div>
+    </Absolute>
   )
 }
 

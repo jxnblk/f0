@@ -1,7 +1,7 @@
 
 import React from 'react'
 import getScale from './get-scale'
-import Div from './Div'
+import Absolute from './Absolute'
 import Label from './Label'
 
 // Split up or handle unpadded labels
@@ -69,13 +69,13 @@ const YAxis = ({
   return (
     <div style={sx.root}>
       {labels.map((label, i) => (
-        <Div
+        <Absolute
           key={i}
           y={i / (labels.length - 1) * 100}>
           <Label
             style={sx.label}
             children={label} />
-        </Div>
+        </Absolute>
       ))}
     </div>
   )
