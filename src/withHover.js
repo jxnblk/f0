@@ -9,12 +9,8 @@ const withHover = (Component) => {
         x: null,
         y: null
       }
-      // this.handleMouseEnter = this.handleMouseEnter.bind(this)
       this.handleMouseLeave = this.handleMouseLeave.bind(this)
       this.handleMouseMove = this.handleMouseMove.bind(this)
-    }
-
-    handleMouseEnter (e) {
     }
 
     handleMouseLeave (e) {
