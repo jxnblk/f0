@@ -17,7 +17,7 @@ const Bar = ({
   style,
   ...rest
 }) => {
-  if (!points.length) return null
+  if (!points || !points.length) return null
 
   const bars = points.map(({ pad, y, d }, i) => {
     const bx = pad.x - pad.width / 2

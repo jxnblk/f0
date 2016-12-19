@@ -8,6 +8,9 @@ const Footer = ({
     root: {
       color: colors[4],
       backgroundColor: colors[0],
+      transitionProperty: 'color, background-color, fill',
+      transitionDuration: '.2s, .8s',
+      transitionTimingFunction: 'ease-out'
     }
   }
 
