@@ -11,9 +11,6 @@ const Dot = ({
   style
 }) => {
   const sx = {
-    transitionProperty: 'color, fill, stroke',
-    transitionTimingFunction: 'linear',
-    transitionDuration: '.5s',
     ...style
   }
 

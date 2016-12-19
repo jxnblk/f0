@@ -11,7 +11,7 @@ Minimal, composable, fully-fluid SVG charts for React
 npm i -S f0
 ```
 
-```js
+```jsx
 import React from 'react'
 import { Line, Bars } from 'f0'
 
@@ -46,30 +46,29 @@ export default App
 
 ### Line
 
-```js
+```jsx
 <Line
   data={data}
 />
 ```
 
-```js
+```jsx
 <Line
   data={data}
   color='tomato'
   strokeWidth={2}
-  dots
 />
 ```
 
 ### Area
 
-```js
+```jsx
 <Area
   data={data}
 />
 ```
 
-```js
+```jsx
 <Area
   data={data}
   color='tomato'
@@ -79,31 +78,43 @@ export default App
 
 ### Bar
 
-```js
+```jsx
 <Bar
   data={data}
   />
 ```
 
-```js
+```jsx
 <Bar
   data={data}
   color='tomato'
   />
 ```
 
-### Svg
+### Dots
 
-```js
-<Svg>
+```jsx
+<Dots
+  data={data}
+  color='tomato'
+  strokeWidth={2}
+  size={12}
+  fill
+/>
+```
+
+### Group
+
+```jsx
+<Group>
   <Bar data={a} />
   <Line data={b} />
-</Svg>
+</Group>
 ```
 
 ### Chart
 
-```js
+```jsx
 <Chart>
   <Line data={data} />
   <Axis
@@ -118,21 +129,30 @@ export default App
 </Chart>
 ```
 
-### Rules
-
-```js
-<Svg>
-  <Rules y={5} />
-  <Line data={data} />
-</Svg>
+```jsx
+<Chart data={data}>
+  <Group>
+    <Line />
+    <Dots />
+  </Group>
+</Chart>
 ```
 
-### Axis
+### Rules
 
-```js
+```jsx
+<Chart>
+  <Rules y={5} />
+  <Line data={data} />
+</Chart>
+```
+
+### XAxis
+
+```jsx
 <Chart>
   <Line data={data} />
-  <Axis
+  <XAxis
     labels={[
       'Mon',
       'Tue',
@@ -141,8 +161,7 @@ export default App
       'Fri'
     ]}
   />
-  <Axis
-    y
+  <YAxis
     labels={[
       32,
       16,
@@ -152,9 +171,18 @@ export default App
 </Chart>
 ```
 
+### Tooltip
+
+```jsx
+<Chart data={data} hoverable>
+  <Bar />
+  <Tooltip />
+</Chart>
+```
+
 ### DataLabels
 
-```js
+```jsx
 <Chart>
   <Bar data={data} />
   <DataLabels data={data} />
@@ -170,31 +198,4 @@ Modern evergreen browsers should support this feature, but charts may appear dis
 
 [MIT License](/LICENSE.md)
 
----
-
-## Beta 5 Notes
-
-```jsx
-// Example Usage
-<Chart
-  data={data}
-  min={0}
-  format={formatData}
-  niceCount={3}>
-  <Rules x y />
-  <Line />
-  <Dots />
-  <YAxis />
-  <XAxis labels={labels.x} />
-  <Tooltip />
-</Chart>
-```
-
-```jsx
-<Chart min={0}>
-  <Rules y />
-  <Bar data={data.a} />
-  <Line data={data.b} />
-</Chart>
-```
 

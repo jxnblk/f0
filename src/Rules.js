@@ -35,7 +35,6 @@ const Rules = ({
       />
     ))
 
-  // To do:
   y = y || labels.y.length || 0
 
   const yRules = createArray(y)
