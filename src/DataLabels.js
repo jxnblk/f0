@@ -12,9 +12,6 @@ const DataLabels = ({
   hoverPoint,
   mouse,
 
-  // Do these get passed through?
-  min,
-  max,
   format = n => n,
   style,
   ...props

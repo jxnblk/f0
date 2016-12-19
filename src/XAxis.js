@@ -39,8 +39,6 @@ const XAxis = ({
       flexBasis: labelWidth,
       paddingTop: 8,
       paddingBottom: 8,
-
-      // outline: '1px solid tomato'
     }
   }
 

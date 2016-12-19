@@ -14,10 +14,6 @@ const Line = ({
   hoverPoint,
   mouse,
 
-  // min,
-  // max,
-  // padWidth,
-
   color = 'currentcolor',
   strokeWidth = 3,
   strokeLinecap = 'round',

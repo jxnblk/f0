@@ -10,12 +10,8 @@ const Dot = ({
   strokeWidth,
   style
 }) => {
-  const sx = {
-    ...style
-  }
-
   return (
-    <g style={sx}>
+    <g style={style}>
       <line
         x1={x}
         y1={y}
