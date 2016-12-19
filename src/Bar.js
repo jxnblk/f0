@@ -9,6 +9,10 @@ const Bar = ({
   labels,
   pad,
 
+  hoverPoint,
+  mouse,
+
+  hoverStyle,
   color = 'currentcolor',
   style,
   ...rest

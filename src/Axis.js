@@ -11,6 +11,8 @@ const XAxis = ({
   rule,
   scale,
   padWidth,
+  hoverPoint,
+  mouse,
   style
 }) => {
   const sx = {

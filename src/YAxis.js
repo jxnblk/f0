@@ -10,6 +10,9 @@ const YAxis = ({
   labels,
   pad,
 
+  hoverPoint,
+  mouse,
+
   rule,
   format = (n) => n,
   style,

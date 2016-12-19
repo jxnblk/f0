@@ -11,6 +11,9 @@ const Line = ({
   points = [],
   labels,
 
+  hoverPoint,
+  mouse,
+
   // min,
   // max,
   // padWidth,

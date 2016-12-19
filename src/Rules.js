@@ -15,6 +15,9 @@ const Rules = ({
   points,
   labels,
 
+  hoverPoint,
+  mouse,
+
   ...rest
 }) => {
   if (x < 1 && y < 1) return null

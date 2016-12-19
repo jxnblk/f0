@@ -9,6 +9,9 @@ const XAxis = ({
   labels,
   pad,
 
+  hoverPoint,
+  mouse,
+
   rule,
   format = (n) => n,
   style,

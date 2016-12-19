@@ -9,6 +9,9 @@ const Area = ({
   points = [],
   labels,
 
+  hoverPoint,
+  mouse,
+
   color = 'currentcolor',
   opacity = 1,
   pad,

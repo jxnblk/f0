@@ -11,27 +11,36 @@ const Dots = ({
   labels,
   pad,
 
+  hoverPoint,
+  mouse,
+
   color,
   size,
   fill,
   strokeWidth,
+  hoverProps,
   ...rest
 }) => {
   const paddedPoints = pad ? padPoints(points) : points
 
   return (
     <Svg {...rest}>
-      {paddedPoints.map(({ x, y }, i) => (
-        <Dot
-          key={i}
-          x={x}
-          y={y}
-          size={size}
-          color={color}
-          fill={fill}
-          strokeWidth={strokeWidth}
-        />
-      ))}
+      {paddedPoints.map(({ x, y }, i) => {
+        const hover = i === hoverPoint.index
+          ? hoverProps : null
+        return (
+          <Dot
+            key={i}
+            x={x}
+            y={y}
+            size={size}
+            color={color}
+            fill={fill}
+            strokeWidth={strokeWidth}
+            {...hover}
+          />
+        )
+      })}
     </Svg>
   )
 }

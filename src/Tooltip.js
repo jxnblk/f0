@@ -8,16 +8,16 @@ const Tooltip = ({
   points,
   labels,
 
-  hovering,
+  hoverPoint,
   mouse,
+
   style,
+  format = (n) => n,
   ...props
 }) => {
-  if (!hovering) return null
+  if (mouse.x === null) return null
 
-  const index = Math.round(mouse.x * points.length - 1)
-  const point = points[index]
-  const { x, y } = point
+  const { x, y } = hoverPoint
 
   const sx = {
     paddingTop: 2,
@@ -27,9 +27,11 @@ const Tooltip = ({
     marginBottom: 8,
     borderRadius: 2,
     color: '#fff',
-    backgroundColor: 'currentcolor',
+    backgroundColor: '#000',
     ...style
   }
+
+  const label = format(hoverPoint.d)
 
   return (
     <Absolute
@@ -37,9 +39,11 @@ const Tooltip = ({
       center
       x={x}
       y={y}>
-      <div style={sx}>
+      <div
+        className='Tooltip'
+        style={sx}>
         <Label>
-          {point.d}
+          {label}
         </Label>
       </div>
     </Absolute>

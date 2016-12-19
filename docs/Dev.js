@@ -64,7 +64,11 @@ const Dev = ({
                 <Dots
                   fill='white'
                   strokeWidth={3}
-                  color={colors[1]} />
+                  color={colors[1]}
+                  hoverProps={{
+                    fill: null
+                  }}
+                />
               </Group>
               <Rules />
               <XAxis />

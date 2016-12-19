@@ -6,24 +6,19 @@ const withHover = (Component) => {
     constructor () {
       super()
       this.state = {
-        hovering: false,
         x: null,
-        y: null,
+        y: null
       }
-      this.handleMouseEnter = this.handleMouseEnter.bind(this)
+      // this.handleMouseEnter = this.handleMouseEnter.bind(this)
       this.handleMouseLeave = this.handleMouseLeave.bind(this)
       this.handleMouseMove = this.handleMouseMove.bind(this)
     }
 
     handleMouseEnter (e) {
-      this.setState({
-        hovering: true
-      })
     }
 
     handleMouseLeave (e) {
       this.setState({
-        hovering: false,
         x: null,
         y: null
       })
@@ -45,16 +40,21 @@ const withHover = (Component) => {
       } = this.props
 
       const {
-        hovering,
         x,
         y
       } = this.state
 
+      const { points = [] } = props
+      const hoverIndex = Math.round(x * (points.length - 1))
+      const hoverPoint = points[hoverIndex] || {}
+
       const hoverProps = hoverable ? {
-        onMouseEnter: this.handleMouseEnter,
         onMouseLeave: this.handleMouseLeave,
         onMouseMove: this.handleMouseMove,
-        hovering,
+        hoverPoint: {
+          index: hoverIndex,
+          ...hoverPoint
+        },
         mouse: {
           x,
           y

@@ -7,6 +7,9 @@ const Svg = ({
   labels,
   pad,
 
+  hoverPoint,
+  mouse,
+
   viewBox = '0 0 100 100',
   width = '100%',
   height = 256,

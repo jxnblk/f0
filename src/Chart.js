@@ -16,7 +16,7 @@ const Chart = ({
   points,
   labels,
 
-  hovering,
+  hoverPoint,
   mouse,
 
   ...props
@@ -34,8 +34,8 @@ const Chart = ({
     labels,
     pad,
     height,
-    hovering,
-    mouse
+    mouse,
+    hoverPoint
   })
 
   return (

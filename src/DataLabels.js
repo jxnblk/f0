@@ -8,9 +8,15 @@ const DataLabels = ({
   scale,
   pad,
   points = [],
+
+  hoverPoint,
+  mouse,
+
+  // Do these get passed through?
   min,
   max,
   format = n => n,
+  style,
   ...props
 }) => {
   const sx = {
@@ -21,6 +27,7 @@ const DataLabels = ({
     label: {
       width: '100%',
       textAlign: 'center',
+      ...style
     }
   }
 

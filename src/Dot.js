@@ -10,8 +10,15 @@ const Dot = ({
   strokeWidth,
   style
 }) => {
+  const sx = {
+    transitionProperty: 'color, fill, stroke',
+    transitionTimingFunction: 'linear',
+    transitionDuration: '.5s',
+    ...style
+  }
+
   return (
-    <g style={style}>
+    <g style={sx}>
       <line
         x1={x}
         y1={y}
