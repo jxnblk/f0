@@ -1,8 +1,13 @@
 
 import React from 'react'
+import { compose } from 'recompose'
 import withScale from './withScale'
+import withHover from './withHover'
 
-const Chart = ({
+class Chart extends React.Component {
+
+render () {
+  const {
   width = '100%',
   height = 256,
   style,
@@ -14,8 +19,11 @@ const Chart = ({
   points,
   labels,
 
+  hovering,
+  mouse,
+
   ...props
-}) => {
+} = this.props
   const sx = {
     position: 'relative',
     width,
@@ -39,6 +47,7 @@ const Chart = ({
     />
   )
 }
+}
 
 const cloneChildren = (children, props) => {
   return React.Children.map(children, (child) => {
@@ -54,5 +63,10 @@ const cloneChildren = (children, props) => {
   })
 }
 
-export default withScale(Chart)
+const enhance = compose(
+  withScale,
+  withHover
+)
+
+export default enhance(Chart)
 

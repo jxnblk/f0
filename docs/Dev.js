@@ -53,7 +53,7 @@ const Dev = ({
               data={logo}
               niceCount={3}
               min={0}
-            >
+              hoverable>
               <Group>
                 <Area
                   color={colors[3]}

@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "d3-array": "^1.0.1",
-    "d3-scale": "^1.0.3"
+    "d3-scale": "^1.0.3",
+    "recompose": "^0.21.0"
   }
 }
