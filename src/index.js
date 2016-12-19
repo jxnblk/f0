@@ -13,10 +13,12 @@ import Rules from './Rules'
 import XAxis from './XAxis'
 import YAxis from './YAxis'
 import DataLabels from './DataLabels'
+import Tooltip from './Tooltip'
 
 // HOC
 import getScale from './get-scale'
 import withScale from './withScale'
+import withHover from './withHover'
 
 
 export { default as Chart } from './Chart'
@@ -31,9 +33,11 @@ export { default as Rules } from './Rules'
 export { default as XAxis } from './XAxis'
 export { default as YAxis } from './YAxis'
 export { default as DataLabels } from './DataLabels'
+export { default as Tooltip } from './Tooltip'
 
 export { default as getScale } from './get-scale'
 export { default as withScale } from './withScale'
+export { default as withHover } from './withHover'
 
 export default {
   Chart,
@@ -46,7 +50,9 @@ export default {
   YAxis,
   Rules,
   DataLabels,
+  Tooltip,
   getScale,
-  withScale
+  withScale,
+  withHover
 }
 

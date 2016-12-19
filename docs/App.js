@@ -79,7 +79,7 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    setInterval(this.randomize, 2000)
+    setInterval(this.randomize, 20000)
   }
 
   render () {

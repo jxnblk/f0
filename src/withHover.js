@@ -13,19 +13,7 @@ const withHover = (Component) => {
       this.handleMouseEnter = this.handleMouseEnter.bind(this)
       this.handleMouseLeave = this.handleMouseLeave.bind(this)
       this.handleMouseMove = this.handleMouseMove.bind(this)
-      // this.getBoundingRect = this.getBoundingRect.bind(this)
     }
-
-    componentDidMount () {
-      // this.getBoundingRect()
-    }
-
-    // getBoundingRect () {
-    //   const root = this.root
-    //   const { width, height } = root.getBoundingClientRect()
-    //   // this.setState({ width, height })
-    //   return { width, height }
-    // }
 
     handleMouseEnter (e) {
       this.setState({

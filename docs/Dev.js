@@ -16,6 +16,7 @@ import {
   XAxis,
   YAxis,
   DataLabels,
+  Tooltip
 } from '../src'
 import { fl } from './util'
 
@@ -68,6 +69,7 @@ const Dev = ({
               <Rules />
               <XAxis />
               <YAxis />
+              <Tooltip />
             </Chart>
             <Bar
               data={logo}

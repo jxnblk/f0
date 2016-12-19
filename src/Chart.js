@@ -4,10 +4,7 @@ import { compose } from 'recompose'
 import withScale from './withScale'
 import withHover from './withHover'
 
-class Chart extends React.Component {
-
-render () {
-  const {
+const Chart = ({
   width = '100%',
   height = 256,
   style,
@@ -23,7 +20,7 @@ render () {
   mouse,
 
   ...props
-} = this.props
+}) => {
   const sx = {
     position: 'relative',
     width,
@@ -36,7 +33,9 @@ render () {
     points,
     labels,
     pad,
-    height
+    height,
+    hovering,
+    mouse
   })
 
   return (
@@ -46,7 +45,6 @@ render () {
       children={clonedChildren}
     />
   )
-}
 }
 
 const cloneChildren = (children, props) => {
