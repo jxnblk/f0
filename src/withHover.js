@@ -26,7 +26,7 @@ const withHover = (Component) => {
 
     handleMouseMove (e) {
       const { offsetX, offsetY } = e.nativeEvent
-      const { width, height } = e.target.getBoundingClientRect()
+      const { width, height } = this.root.getBoundingClientRect()
       const x = offsetX / width
       const y = offsetY / height
 
@@ -45,7 +45,7 @@ const withHover = (Component) => {
       } = this.state
 
       const { points = [] } = props
-      const hoverIndex = Math.round(x * (points.length - 1))
+      const hoverIndex = x && Math.round(x * (points.length - 1))
       const hoverPoint = points[hoverIndex] || {}
 
       const hoverProps = hoverable ? {

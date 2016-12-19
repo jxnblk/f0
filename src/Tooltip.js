@@ -10,6 +10,7 @@ const Tooltip = ({
 
   hoverPoint,
   mouse,
+  pad,
 
   style,
   format = (n) => n,
@@ -18,6 +19,8 @@ const Tooltip = ({
   if (mouse.x === null) return null
 
   const { x, y } = hoverPoint
+  const padX = hoverPoint.pad && hoverPoint.pad.x
+  const paddedX = pad ? padX : x
 
   const sx = {
     paddingTop: 2,
@@ -37,7 +40,7 @@ const Tooltip = ({
     <Absolute
       top
       center
-      x={x}
+      x={paddedX}
       y={y}>
       <div
         className='Tooltip'

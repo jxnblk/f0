@@ -12,7 +12,7 @@ const Bar = ({
   hoverPoint,
   mouse,
 
-  hoverStyle,
+  hoverProps,
   color = 'currentcolor',
   style,
   ...rest
@@ -25,6 +25,8 @@ const Bar = ({
       ? 0
       : d > 0 ? 100 - y : y
     const by = d >= 0 ? y : 0
+    const hover = hoverPoint && i === hoverPoint.index
+      ? hoverProps : null
 
     return (
       <rect
@@ -33,6 +35,7 @@ const Bar = ({
         y={by}
         width={pad.width}
         height={hi}
+        {...hover}
       />
     )
   })

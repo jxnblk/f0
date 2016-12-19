@@ -53,6 +53,7 @@ const Dev = ({
             <Chart
               data={logo}
               niceCount={3}
+              pad
               min={0}
               hoverable>
               <Group>
@@ -75,11 +76,16 @@ const Dev = ({
               <YAxis />
               <Tooltip />
             </Chart>
-            <Bar
+            <Chart
               data={logo}
               min={0}
               max={16}
-            />
+              pad
+              hoverable>
+              <Bar
+              />
+              <Tooltip />
+            </Chart>
             <Line
               data={logo}
               min={0}
