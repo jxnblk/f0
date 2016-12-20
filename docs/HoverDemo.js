@@ -3,13 +3,8 @@ import React from 'react'
 import { VictoryAnimation } from 'victory'
 import {
   Chart,
-  Group,
   Bar,
-  Line,
-  Dots,
   Rules,
-  XAxis,
-  YAxis,
   Tooltip
 } from '../src'
 import { fl } from './util'
@@ -72,12 +67,7 @@ const HoverDemo = ({
               pad
               hoverable>
               <Rules y={3} color={colors[1]} />
-              <Group>
-                <Bar
-                  hoverProps={props.barHover}
-                />
-              </Group>
-              <YAxis color='white' labels={[16, 8, 0]} />
+              <Bar hoverProps={props.barHover} />
               <Tooltip
                 format={fl}
                 style={sx.tooltip}
