@@ -21,8 +21,9 @@ const withHover = (Component) => {
     }
 
     handleMouseMove (e) {
-      const { offsetX, offsetY } = e.nativeEvent
-      const { width, height } = this.root.getBoundingClientRect()
+      const { top, left, width, height } = this.root.getBoundingClientRect()
+      const offsetX = e.clientX - left
+      const offsetY = e.clientX - top
       const x = offsetX / width
       const y = offsetY / height
 
