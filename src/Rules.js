@@ -20,7 +20,7 @@ const Rules = ({
 
   ...rest
 }) => {
-  if (x < 1 && y < 1) return null
+  if (!points || !points.length || (x < 1 && y < 1)) return null
 
   x = x === true
     ? points.length || 0

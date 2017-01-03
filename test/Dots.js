@@ -2,15 +2,16 @@
 import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
+import { Dots } from '../src'
 import Svg from '../src/Svg'
-import { Bar } from '../src'
+import Dot from '../src/Dot'
 
 let wrapper
 let inner
 
 test('renders', t => {
   t.notThrows(() => {
-    wrapper = shallow(<Bar data={[ 1 ]} />)
+    wrapper = shallow(<Dots data={[ 1 ]} />)
   })
 })
 
@@ -26,32 +27,20 @@ test('has scale props', t => {
   t.is(props.includes('labels'), true)
 })
 
-test('color prop changes fill', t => {
+test('color prop is passed to Dot', t => {
   const wrapper = shallow(
-    <Bar
+    <Dots
       data={[1]}
       color='tomato'
     />
   )
   inner = wrapper.first().shallow()
-  t.is(inner.props().fill, 'tomato')
-})
-
-test('styles root element', t => {
-  const wrapper = shallow(
-    <Bar
-      data={[ 1 ]}
-      style={{ color: 'tomato' }} />
-  )
-  inner = wrapper.first().shallow()
-  t.deepEqual(inner.props().style, {
-    position: 'relative',
-    color: 'tomato'
-  })
+  const dotProps = inner.find(Dot).props()
+  t.is(dotProps.color, 'tomato')
 })
 
 test('renders null when no data is provided', t => {
-  wrapper = shallow(<Bar />)
+  wrapper = shallow(<Dots />)
   t.is(wrapper.html(), '')
 })
 

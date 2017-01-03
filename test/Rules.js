@@ -2,15 +2,16 @@
 import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
+import { Rules } from '../src'
 import Svg from '../src/Svg'
-import { Bar } from '../src'
+import Rule from '../src/Rule'
 
 let wrapper
 let inner
 
 test('renders', t => {
   t.notThrows(() => {
-    wrapper = shallow(<Bar data={[ 1 ]} />)
+    wrapper = shallow(<Rules data={[ 1 ]} />)
   })
 })
 
@@ -26,32 +27,38 @@ test('has scale props', t => {
   t.is(props.includes('labels'), true)
 })
 
-test('color prop changes fill', t => {
+test('color prop is passed to Rule children', t => {
   const wrapper = shallow(
-    <Bar
+    <Rules
+      x
       data={[1]}
       color='tomato'
     />
   )
   inner = wrapper.first().shallow()
-  t.is(inner.props().fill, 'tomato')
+  const ruleProps = inner.find(Rule).props()
+  t.is(ruleProps.color, 'tomato')
 })
 
 test('styles root element', t => {
   const wrapper = shallow(
-    <Bar
+    <Rules
       data={[ 1 ]}
       style={{ color: 'tomato' }} />
   )
   inner = wrapper.first().shallow()
   t.deepEqual(inner.props().style, {
-    position: 'relative',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     color: 'tomato'
   })
 })
 
 test('renders null when no data is provided', t => {
-  wrapper = shallow(<Bar />)
+  wrapper = shallow(<Rules />)
   t.is(wrapper.html(), '')
 })
 

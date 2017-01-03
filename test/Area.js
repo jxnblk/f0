@@ -3,14 +3,14 @@ import test from 'ava'
 import React from 'react'
 import { shallow } from 'enzyme'
 import Svg from '../src/Svg'
-import { Bar } from '../src'
+import { Area } from '../src'
 
 let wrapper
 let inner
 
 test('renders', t => {
   t.notThrows(() => {
-    wrapper = shallow(<Bar data={[ 1 ]} />)
+    wrapper = shallow(<Area data={[ 1 ]} />)
   })
 })
 
@@ -27,9 +27,9 @@ test('has scale props', t => {
 })
 
 test('color prop changes fill', t => {
-  const wrapper = shallow(
-    <Bar
-      data={[1]}
+  wrapper = shallow(
+    <Area
+      data={[ 1 ]}
       color='tomato'
     />
   )
@@ -37,21 +37,8 @@ test('color prop changes fill', t => {
   t.is(inner.props().fill, 'tomato')
 })
 
-test('styles root element', t => {
-  const wrapper = shallow(
-    <Bar
-      data={[ 1 ]}
-      style={{ color: 'tomato' }} />
-  )
-  inner = wrapper.first().shallow()
-  t.deepEqual(inner.props().style, {
-    position: 'relative',
-    color: 'tomato'
-  })
-})
-
 test('renders null when no data is provided', t => {
-  wrapper = shallow(<Bar />)
+  wrapper = shallow(<Area />)
   t.is(wrapper.html(), '')
 })
 

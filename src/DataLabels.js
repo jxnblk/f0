@@ -7,17 +7,18 @@ import Label from './Label'
 const DataLabels = ({
   scale,
   pad,
-  points = [],
+  points,
 
   hoverPoint,
   mouse,
 
   format = n => n,
   style,
-  ...props
+  ...rest
 }) => {
+  if (!points || !points.length) return null
+
   const sx = {
-    root: {},
     div: {
       width: scale.pad.width + '%'
     },
@@ -30,7 +31,7 @@ const DataLabels = ({
 
   const labels = points.map(({ x, pad, y, d }, i) => {
     const lx = pad.x - pad.width / 2
-    const ly = y
+    const ly = y - 2
     return (
       <Absolute key={i} x={lx} y={ly}
         top

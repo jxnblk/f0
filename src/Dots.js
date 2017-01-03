@@ -21,6 +21,8 @@ const Dots = ({
   hoverProps,
   ...rest
 }) => {
+  if (!points || !points.length) return null
+
   const paddedPoints = pad ? padPoints(points) : points
 
   return (

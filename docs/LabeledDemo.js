@@ -8,7 +8,8 @@ import {
   Dots,
   Rules,
   XAxis,
-  YAxis
+  YAxis,
+  DataLabels
 } from '../src'
 import { fl } from './util'
 
@@ -77,6 +78,9 @@ const LabeledDemo = ({
                 ]}
               />
               <YAxis />
+              <DataLabels
+                format={Math.round}
+              />
             </Chart>
           </div>
         )}

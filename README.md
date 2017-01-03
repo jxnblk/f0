@@ -198,11 +198,3 @@ Modern evergreen browsers should support this feature, but charts may appear dis
 
 [MIT License](/LICENSE.md)
 
----
-
-## beta 5 to do:
-
-- [ ] Support hoverable prop on Bar, Line, Area, & Dots
-- [ ] Support children in Bar, Line, Area, & Dots
-- [ ] Write basic tests
-

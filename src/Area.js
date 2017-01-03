@@ -31,12 +31,10 @@ const Area = ({
   ]
 
   return (
-    <Svg {...rest}>
-      <path
-        d={d}
-        fill={color}
-        opacity={opacity}
-      />
+    <Svg {...rest}
+      fill={color}
+      opacity={opacity}>
+      <path d={d} />
     </Svg>
   )
 }
